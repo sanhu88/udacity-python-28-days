@@ -46,3 +46,11 @@ PS. 赋值语句右侧的代码始终先发生。（先创建再赋值分配）
 ### 列表
 
 `[1, 2, 3, 4, 5]` 和 `[7, 2, 1, 0, 9]` 属于**列表**。在 Python 中，列表放入方括号里，并且用逗号分隔各项。
+
+
+
+### 模块 module
+
+a file that has a collection of useful code that we can be used in other Python programs.
+
+> 注意，Python 区分大小写

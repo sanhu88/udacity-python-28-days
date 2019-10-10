@@ -54,3 +54,11 @@ PS. 赋值语句右侧的代码始终先发生。（先创建再赋值分配）
 a file that has a collection of useful code that we can be used in other Python programs.
 
 > 注意，Python 区分大小写
+
+
+
+### 方法 method
+
+a block of code that`s hidden away somewhere else,that  this code has a name and now we can run it but using lines like amy.forword(100)
+
+对叫做*amy*的Turtle对象调用*foroerd*方法，并为其输入100

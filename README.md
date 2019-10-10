@@ -62,3 +62,19 @@ a file that has a collection of useful code that we can be used in other Python 
 a block of code that`s hidden away somewhere else,that  this code has a name and now we can run it but using lines like amy.forword(100)
 
 对叫做*amy*的Turtle对象调用*foroerd*方法，并为其输入100
+
+
+
+### 注释
+
+在代码中，**注释**是针对人类读者的消息。计算机在读取代码时，会忽略注释。在 Python 中，注释行以 `#` 开头
+
+- with() 宽度，笔迹的粗细
+
+- speed()速度，越大越快，0最快
+
+- penup() 起笔，不会有笔迹
+
+- pendown()落笔，重新有笔迹
+
+  

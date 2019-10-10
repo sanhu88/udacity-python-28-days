@@ -78,3 +78,5 @@ a block of code that`s hidden away somewhere else,that  this code has a name and
 - pendown()落笔，重新有笔迹
 
   
+  #### 注释快捷键
+  在大多数代码编辑器中，你都可以使用很方便的键盘快捷键注释掉/取消注释一行代码。在 Mac 系统上，快捷键是 ⌘/。在 Windows 系统上，快捷键是 Ctrl + /。如果你将光标放在一行代码上，并按下此快捷键，编辑器将在代码行开头插入 #。

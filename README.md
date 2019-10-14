@@ -98,3 +98,18 @@ for side in sides:
     mary.forward(step)
     mary.right(degree)
 
+
+
+### 循环 loop
+
+> for ... in ...
+
+side = [1,2,3,4,5] 列表里可以换成字符串，或者其他数字，甚至不同类型可以混合。只要个数不变，不影响画图。
+
+> ```python
+> for side in [1, 2, 3, 4, 5]:
+>     amy.forward(100)
+>     amy.right(72)
+> ```
+
+缩进和顺序很重要，没有缩进，就不执行缩进。

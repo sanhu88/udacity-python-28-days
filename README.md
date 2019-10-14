@@ -80,3 +80,21 @@ a block of code that`s hidden away somewhere else,that  this code has a name and
   
   #### 注释快捷键
   在大多数代码编辑器中，你都可以使用很方便的键盘快捷键注释掉/取消注释一行代码。在 Mac 系统上，快捷键是 ⌘/。在 Windows 系统上，快捷键是 Ctrl + /。如果你将光标放在一行代码上，并按下此快捷键，编辑器将在代码行开头插入 #。
+
+
+
+### 变量 variable
+
+> pretty_color = 'lightblue'
+
+import turtle
+mary_color = "purple"
+step = 100
+degree =72
+sides =[1, 2, 3, 4, 5]
+mary = turtle.Turtle()
+mary.color(mary_color)
+for side in sides:
+    mary.forward(step)
+    mary.right(degree)
+

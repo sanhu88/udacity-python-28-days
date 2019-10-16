@@ -161,3 +161,41 @@ syntax注意冒号（colon）和缩进（indentation）
 
 
 ### 嵌套循环 Nested Loop
+
+~~~python
+import turtle
+anna = turtle.Turtle()
+for path in [1, 2, 3, 4]:
+    for step in [1, 2, 3]:
+        anna.forward(10)
+~~~
+
+
+
+### Turtle总结
+
+- 移动
+
+  lola.forward(n) 	前进，可以负数
+
+  lola.back(n)
+
+  lola.speed(s) 	速度，0时最快
+
+- 转向
+
+  lola.right(a) 	右转a度数，可以为负数
+
+  lola.left(a)
+
+- 绘制
+
+  lola.penup() 	抬笔
+
+  lola.pedown()	落笔
+
+- 显示和隐藏
+
+  lola.hideturtle()	隐藏箭头
+
+  lola.showturtle()	取消隐藏

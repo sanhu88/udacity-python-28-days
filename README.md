@@ -199,3 +199,56 @@ for path in [1, 2, 3, 4]:
   lola.hideturtle()	隐藏箭头
 
   lola.showturtle()	取消隐藏
+
+
+
+### 三种错误
+
+编程中会出现三大类型的错误：**语法错误**、**用法错误**和**逻辑错误**
+
+#### 语法错误
+
+也就是拼写错误，少了后括号，或者for少了很容易落掉的冒号
+
+#### 用法错误
+
+就是不可以这样使用
+
+~~~python
+alison.forward("orange")
+~~~
+
+包含Python 的 `NameError` 和 `TypeError` 消息通常都是这种类型的错误。你之前见到的 `ZeroDivisionError` 也算是这种错误。
+
+#### 逻辑错误
+
+~~~python
+import turtle
+michael = turtle.Turtle()
+for side in [1, 2, 3, 4, 5, 7, 8]:
+    michael.forward(100)
+    michael.right(45)
+~~~
+
+上面for中少了元素6，所以不是八边形
+
+#### 缩进计算
+
+~~~python
+willow = turtle.Turtle()
+for x in [1, 2, 3]:
+    willow.forward(1)
+    for y in [4, 5, 6, 7]:
+        willow.forward(1)
+    willow.forward(1)
+~~~
+
+一共前进了多少？
+
+外循环每次进2格，共3次外循环，小计6
+
+内循环每次进1，4次内*3此外，小计12
+
+合计18
+
+答案：由于一个循环在另一个循环里缩进了，因此不同的 `forward` 命令运行了不同的次数。第一个 `forward` 命令运行三次；第二个运行十二次，第三个运行三次。

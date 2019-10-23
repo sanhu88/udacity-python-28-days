@@ -17,7 +17,9 @@ a connection between a name in the code and some date in computer`s memory
 
 ### 赋值 assignment
 
+> ~~~ python
 > gorge = turtle.Turtle()
+> ~~~
 
 En : connect a name with some data in memory
 
@@ -85,7 +87,11 @@ a block of code that`s hidden away somewhere else,that  this code has a name and
 
 ### 变量 variable
 
-> pretty_color = 'lightblue'
+~~~ python
+pretty_color = 'lightblue'
+~~~
+
+
 
 import turtle
 mary_color = "purple"
@@ -254,3 +260,7 @@ for x in [1, 2, 3]:
 合计18
 
 答案：由于一个循环在另一个循环里缩进了，因此不同的 `forward` 命令运行了不同的次数。第一个 `forward` 命令运行三次；第二个运行十二次，第三个运行三次。
+
+#### 六边形
+
+> 多边形移动角度，是360除以形状的编书。

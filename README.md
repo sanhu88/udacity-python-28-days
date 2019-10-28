@@ -267,5 +267,42 @@ for x in [1, 2, 3]:
 
 ***
 
+## 第四课
 
+### statements 语句
 
+##### 简单语句 Simple Satements
+
+* 赋值语句 Assignment Statements
+
+~~~python
+pretty_color = "Red"
+amy = turtle.Turtle()
+~~~
+
+* 导入语句 Import Statements
+
+~~~python
+import xxx
+~~~
+
+* 调用语句 Call Satements
+
+~~~python
+amy.forward(100)
+amy.color("Blue")
+~~~
+
+##### 复合语句 Compund statements
+
+* for循环
+
+复合语句用来控制Whether / When / How many times to run codes
+
+复合语句包含冒号和缩进
+
+##### 控制流  Control Flow
+
+代码的运行顺序，叫做程序的控制流。复合语句会改变从上到下的控制流。
+
+for循环改变了How Many Times 的控制流

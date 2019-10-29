@@ -354,3 +354,25 @@ for side in [1, 2, 3, 4]:
 
 
 
+#### 函数 Function
+
+ range() 是 Python 的一个内置函数 
+
+~~~python
+print(range(5))
+[0,1,2,3,4]
+~~~
+
+##### 调用语句或者调用 call statement or call
+
+~~~python
+range(100)	#调用range
+~~~
+
+##### argument 参数
+
+~~~python
+range(100)	#100即为传递的参数
+~~~
+
+调用函数-->传递参数-->返回结果

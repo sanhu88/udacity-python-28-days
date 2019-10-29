@@ -3,7 +3,7 @@ learn Python on Udacity
 
 [toc]
 
-
+> 下线运行python 推荐网站 https://trinket.io/
 
 ##	第一部分  turtle
 
@@ -351,4 +351,6 @@ for side in [1, 2, 3, 4]:
     amy.forward(10 * side)
     amy.right(90)
 ~~~
+
+
 

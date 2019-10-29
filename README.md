@@ -318,3 +318,23 @@ sides = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 2
 range(100)
 ~~~
 
+
+
+#### 数字运算
+
+3 X 4 写成 3 * 4 （asterisk 型号），9 ÷ 3 写成 9 / 3 （slash 斜杠）
+
+##### 表达式 Expression
+
+a piece of code that resolves to some value，解析某个值的一段代码
+
+~~~python
+2 + 2
+~~~
+
+表达式有两部分，数字和符号（symbols）
+
+operators 运算符和operands运算对象
+
+<img src="C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20191029153636230.png" alt="image-20191029153636230" style="zoom:50%;" />
+

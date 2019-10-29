@@ -336,5 +336,5 @@ a piece of code that resolves to some value，解析某个值的一段代码
 
 operators 运算符和operands运算对象
 
-<img src="C:\Users\Admin\AppData\Roaming\Typora\typora-user-images\image-20191029153636230.png" alt="image-20191029153636230" style="zoom:50%;" />
+<img src=".\screenshots\operators_operands.png" alt="operators_operands" style="zoom: 50%;" />
 

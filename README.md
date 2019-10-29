@@ -392,3 +392,19 @@ range(100)			#function call
 2. 函数调用 ： 让函数运行的语句
 3. 参数 ： 再调用函数时，传递的数值
 4. 方法 ： 与对象有关的函数
+
+#### 定义函数
+
+> 定义函数再封装重复使用相同部分的代码
+
+调用定义函数要在，定义函数代码之后。
+
+~~~python
+def function_name():
+    xxxxxxxxxxxxxxxxxxxx
+    for _ in range(20):
+        XXXXXXXXXXx
+        
+function_name()
+~~~
+

@@ -1,6 +1,10 @@
 # udacity-python-28-days
 learn Python on Udacity
 
+[toc]
+
+
+
 ##	第一部分  turtle
 
 **程序**是面向计算机的一组指令。程序由代码行组成。每行告诉计算机关于这些指令的一个特定细节信息。
@@ -334,7 +338,17 @@ a piece of code that resolves to some value，解析某个值的一段代码
 
 表达式有两部分，数字和符号（symbols）
 
-operators 运算符和operands运算对象
+operators 运算符和operands运算对象/运算数
 
 <img src=".\screenshots\operators_operands.png" alt="operators_operands" style="zoom: 50%;" />
+
+(图片真实存在。如果看不到图片，因为总所周知的原因，你可能要想点办法)
+
+###### 变量也可以参与到算数运算符
+
+~~~python
+for side in [1, 2, 3, 4]:
+    amy.forward(10 * side)
+    amy.right(90)
+~~~
 

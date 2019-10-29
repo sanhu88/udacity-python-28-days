@@ -397,7 +397,13 @@ range(100)			#function call
 
 > 定义函数再封装重复使用相同部分的代码
 
-调用定义函数要在，定义函数代码之后。
+
+
+> 必须在调用函数之前定义函数，否则会遇到如下所示的错误：
+>
+> **Error: name 'draw_square' is not defined**
+
+ 函数定义始终以 `def` 开头，然后是函数名称，括号 `()` 和冒号 `:` 
 
 ~~~python
 def function_name():
@@ -406,5 +412,49 @@ def function_name():
         XXXXXXXXXXx
         
 function_name()
+~~~
+
+#### 参数 argument
+
+##### 形参 parameters
+
+定义函数的参数，形式上的
+
+ 形参并不是什么高级概念，它就是变量。 
+
+~~~~pytho
+def spiral(sides, turn, color, width):
+~~~~
+
+##### 实参 argument
+
+调用函数时传入的实际参数
+
+ 实参也不是什么高级概念，它只是我们传递给函数的输入 
+
+~~~python
+spiral(150, -30, "blue", 10)
+~~~
+
+ ##### 传递
+
+当我们提到它“传递”此实参时，是指它将此数字赋值给相应的形参 
+
+因此“向函数传递实参”其实就是向变量赋值的另一种方式 
+
+
+
+~~~
+#画个正方形
+import turtle
+jack = turtle.Turtle()
+jack.color("yellow")
+
+def draw_square():
+    for side in range(4):
+        jack.forward(100)
+        jack.right(90)
+
+draw_square()
 ~~~
 

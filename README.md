@@ -521,3 +521,18 @@ draw_flower(100,99)
 
 ![](.\screenshots\draw_flowers.png)
 
+
+
+
+
+### 两个Turtle
+
+~~~python
+import turtle
+romeo = turtle.Turtle()
+juliet = turtle.Turtle()
+~~~
+
+创建两个不同的 turtle 对象（一个叫做romeo。一个叫juliet）
+
+ 那么在内存中有两个不同的底层对象。意味着我们可以单独对这两个对象设置颜色。 

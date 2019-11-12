@@ -536,3 +536,64 @@ juliet = turtle.Turtle()
 创建两个不同的 turtle 对象（一个叫做romeo。一个叫juliet）
 
  那么在内存中有两个不同的底层对象。意味着我们可以单独对这两个对象设置颜色。 
+
+
+
+### 同一个Turtle
+
+~~~python
+import turtle
+romeo = turtle.Turtle()
+montague = romeo
+
+montague.color("red")
+montague.width(5)
+
+montague.forward(100)
+montague.right(90)
+montague.forward(100)
+montague.right(90)
+romeo.color("white")
+montague.forward(100)
+montague.right(90)
+montague.forward(100)
+montague.right(90)
+~~~
+
+在中间，更改了romeo的颜色，mantague后面的也会改变。
+
+### 函数调用函数
+
+~~~python
+import turtle
+
+romeo = turtle.Turtle()
+romeo.color("violet")
+romeo.speed(8)
+
+def draw_square(some_turtle):
+    for side in range(4):
+        some_turtle.forward(100)
+        some_turtle.right(90)
+
+def draw_flower(some_turtle):
+    for petal in range(6):
+        draw_square(some_turtle)
+        some_turtle.right(60)
+    some_turtle.hideturtle()
+
+draw_flower(romeo)
+~~~
+
+调用逻辑如下图
+
+![](.\screenshots\functions-calling-functions.png)
+
+分开写有分开写的好处
+
+ 这种方法很常见，因为它有很大的优势。例如，我们可以在这个程序中添加其他的代码，用 `draw_square` 函数来做点别的事情（而不是画花）。通过将不同的任务分解到不同的函数中，可以让代码使用更方便，也更灵活。 
+
+做练习时，我有写在一起的方法，更少的行数，失去了灵活性。
+
+[我的答案]: ./4-23-花瓣_函数调用函数.py
+

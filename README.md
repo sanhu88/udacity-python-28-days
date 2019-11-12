@@ -597,3 +597,55 @@ draw_flower(romeo)
 
 4-23-花瓣_函数调用函数.py
 
+## 第五课 函数 第二部分
+
+### if
+
+~~~python
+squids = 17
+becky = turtle.Turtle()
+becky.color("red")
+if squids == 42:
+    becky.color("blue")
+becky.width(5)
+~~~
+
+
+
+最后颜色为 red 因为if条件没有满足
+
+
+
+### 循环中加入条件判断
+
+~~~python
+import turtle
+jack = turtle.Turtle()
+jack.color("yellow")
+
+for side in range(4):
+    if side == 3:
+        jack.color("blue")
+    jack.forward(100)
+    jack.right(90)
+~~~
+
+range(4) 会创建序列 0, 1, 2, 3，所以 side 将在循环的 第四次 时，取值为 3 。
+
+
+
+下面这道题做错了
+
+~~~python
+import turtle
+jack = turtle.Turtle()
+jack.color("yellow")
+
+for side in range(4):
+    if side == 2:
+        jack.color("blue")
+    jack.forward(100)
+    jack.right(90)
+~~~
+
+> 颜色更改为蓝色（第三条边）后，没有将其改回黄色的代码，因此在画第四条边时，依然是蓝色。 

@@ -649,3 +649,21 @@ for side in range(4):
 ~~~
 
 > 颜色更改为蓝色（第三条边）后，没有将其改回黄色的代码，因此在画第四条边时，依然是蓝色。 
+
+### if else
+
+~~~python
+import turtle
+jack = turtle.Turtle()
+jack.width(5)
+
+
+for side in range(4):
+    if side == 1:
+        jack.color("blue")
+    else:
+        jack.color("yellow")
+    jack.forward(100)
+    jack.right(90)
+~~~
+

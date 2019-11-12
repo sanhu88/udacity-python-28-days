@@ -476,3 +476,48 @@ draw_square()
 - 每个 `import` 语句都会创建全局变量，然后使用该变量引用导入的模块。例如，语句 `import turtle` 在内存里创建了 *turtle* 模块的副本，并创建一个叫做 `turtle` 的变量，用来引用该数据。然后，当你需要引用该模块时，你可以在代码中使用 `turtle`。换句话说，`import turtle` 语句创建了一个变量，其名称是 `turtle`，值是 turtle 模块本身。
 - 每个函数定义都会创建一个变量。函数名称（例如上方的 `bounce` 和 `boogie`）都是变量！创建了这些变量后，我们就可以在之后需要时引用该函数（例如调用函数时）。
 - 当函数有形参时，例如上方代码里的 `something`，这些形参是该函数的局部变量。
+
+### 变量的作用域
+
+~~~ python
+import turtle
+
+def draw_square(who,length):
+  for side in range(4):
+    who.forward(length)
+    who.right(90)
+    
+def draw_flower(size,petals):
+  doodler = turtle.Turtle()
+  doodler.color("orange")
+  doodler.width(3)
+  doodler.speed(0)
+  for petal in range(petals):
+    draw_square(doodler,size)
+    doodler.right(360/petals)
+    
+draw_flower(100,99)
+~~~
+
+从上到下解读
+
+1. 导入turtle 模块 module【全局】
+
+2. 运行函数定义 draw_squre 【全局】，讲函数主体所有代码放入内存，并与之关联、
+
+3. 定义函数 draw_flower【全局】，(代码只是被保存，没有实际运行)
+
+4. 调用函数 draw_flower，size = 100, petals = 99
+
+5. 然后调用turtle 函数 创建Turtle对象，并保存到doodler 变量中
+
+6. 改变颜色和宽度
+
+7. 进入for循环，range出 0-6的7个数字
+
+8. 调用draw_square全局变量，传入doodler和 100，赋值给形参length 100.
+
+   draw_square 是看不到petals的，因为petals是draw_flower的局部变量
+
+![](.\screenshots\draw_flowers.png)
+

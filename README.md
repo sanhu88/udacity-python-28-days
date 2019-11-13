@@ -699,3 +699,35 @@ for n in range(12):
       draw_square()
 ~~~
 
+### 返回值
+
+~~~python
+def simple_function():
+    return 10
+
+distance = simple_function()
+~~~
+
+return 关键字
+
+~~~python
+import turtle
+t = turtle.Turtle()
+t.color("white")
+t.width(1)
+t.speed(0)
+t.hideturtle()
+
+def square(number):
+    return number**2
+
+for n in range(540):
+    angle = square(n)
+    t.right(angle +.5)
+    t.forward(5)
+~~~
+
+上面代码画出一个很有意思的封闭图形
+
+![](.\screenshots\reture-draw.png)
+

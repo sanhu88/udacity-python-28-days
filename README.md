@@ -779,3 +779,29 @@ turtle 上的 `forward` 方法仅接受一个实参：如果 `mark` 是 turtle�
 -  第一行始终以该语句的关键字开头：`for`、`def` 或 `if` 
 -  第一行始终以冒号 `:` 结尾 
 -  剩余代码行属于代码块，都按照相同的空格数量缩进 
+
+### random模块
+
+#### 确定性 deterministic program
+
+always products the same output for a give input.
+
+import random
+
+- random.randint 随机选择一个整数，接受两个参数，最小值和最大值.
+
+  ~~~python
+  # Roll a six-sided die.
+  dieroll = random.randint(1, 6)
+  ~~~
+
+  
+
+- random.choice,接受一个参数，必须为列表
+
+~~~python
+cards = ["ace", 2, 3, 4, 5, 6, 7, 8, 9, "jack", "queen", "king"]
+# Pick a card at random.
+mycard = random.choice(cards)
+~~~
+

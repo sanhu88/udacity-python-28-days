@@ -3,7 +3,7 @@ learn Python on Udacity
 
 [toc]
 
-> 下线运行python 推荐网站 https://trinket.io/
+> 在线运行python 推荐网站 https://trinket.io/
 
 ##	第一部分  turtle
 

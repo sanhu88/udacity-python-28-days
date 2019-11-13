@@ -731,3 +731,34 @@ for n in range(540):
 
 ![](.\screenshots\reture-draw.png)
 
+函数可以返回多个返回语句。但是被调用时，运行到第一个返回语句后就会停止。除非放在判断语句，比如 if else 中
+
+
+
+小练习
+
+~~~python
+def mystery():
+    for word in ["love", "peace", "kittens"]:
+        return word
+    return "doom"
+~~~
+
+上面将返回的时love。 在第一次遍历循环时，`word` 的值是 `"love"`。函数从未遍历列表的剩余部分。`"doom"` 行是无用代码。 
+
+如果改成下面这样
+
+~~~python
+def mystery():
+    for word in ["love", "peace", "kittens"]:
+        #return word
+         name =word
+    
+    return name
+print(mystery())
+~~~
+
+返回的才是最后一个kittens
+
+
+

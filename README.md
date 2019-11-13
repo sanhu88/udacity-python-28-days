@@ -762,3 +762,8 @@ print(mystery())
 
 
 
+### 循环和实参
+
+turtle 上的 `forward` 方法仅接受一个实参：如果 `mark` 是 turtle，那么 `mark.forward(10, 20)` 将出错。
+
+这意味着，如果你更改函数接受的实参数量，还需要更改调用该函数的每一处代码

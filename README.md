@@ -267,7 +267,7 @@ for x in [1, 2, 3]:
 
 #### 六边形
 
-> 多边形移动角度，是360除以形状的编书。
+> 多边形移动角度，是360除以形状的边数。
 
 ***
 
@@ -834,7 +834,7 @@ def temperatureColor(temp):
 
 
 
-#### elif
+### elif
 
 elif解决了必须if嵌套的代码复杂问题
 
@@ -878,3 +878,26 @@ else:
 	amy.color("gray")
 ~~~
 
+### Turtle边界问题
+
+xcor ，X coordinate : horizontal value
+
+ycor , Y coordinate : vertical value
+
+来检查tutle的当前位置
+
+~~~python
+ t.penup()
+ t.home()
+ t.pendown()
+~~~
+
+home()  将画笔返回到原点 
+
+#### 复习
+
+ 函数调用 `random.randint(0, 359)` 将返回一个从 `0` 到 `359` 的随机数字，也就是随机整数夹角。不需要达到 `360`，因为转动 `360` 度和一开始的朝向一样，也就是转动 `0` 度。 
+
+random.randint 必须有两个参数
+
+random.randint(range(359))

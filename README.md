@@ -861,15 +861,19 @@ else:
 	amy.color("gray")
 ~~~
 
-因为最后一个else是和第二个if对应的。所以即便mood = "happy",颜色却是gray
+因为最后一个else是和第二个if对应的。所以即便mood = "happy",颜色却是gray。
+
+尤其是在多重判断时，会让嵌套变得冗长
 
 使用elif来解决
 
 ~~~python
 if mood == "happy":
-	amy.color("red")
+	amy.color("yellow")
 elif mood == "sad":
 	amy.color("blue")
+elif mood == "angry":
+	amy.color("red")
 else:
 	amy.color("gray")
 ~~~

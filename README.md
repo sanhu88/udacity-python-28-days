@@ -786,7 +786,7 @@ turtle 上的 `forward` 方法仅接受一个实参：如果 `mark` 是 turtle�
 
 always products the same output for a give input.
 
-import random
+#### import random
 
 - random.randint 随机选择一个整数，接受两个参数，最小值和最大值.
 
@@ -803,5 +803,74 @@ import random
 cards = ["ace", 2, 3, 4, 5, 6, 7, 8, 9, "jack", "queen", "king"]
 # Pick a card at random.
 mycard = random.choice(cards)
+~~~
+
+
+
+### 不等式
+
+#### 比较运算符
+
+| **运算** |        **含义**         |
+| :------: | :---------------------: |
+| `a == b` |    `a` 等于 `b` 吗？    |
+| `a < b`  |    `a` 小于 `b` 吗？    |
+| `a > b`  |    `a` 大于 `b` 吗？    |
+| `a <= b` | `a` 小于或等于 `b` 吗？ |
+| `a >= b` | `a` 大于或等于 `b` 吗？ |
+| `a != b` |   `a` 不等于 `b` 吗？   |
+
+~~~python
+def temperatureColor(temp):
+    if temp < 30:
+        color = "blue"
+    else:
+        if temp < 60:
+            color = "purple"
+        else:
+            color = "red"
+    return color
+~~~
+
+
+
+#### elif
+
+elif解决了必须if嵌套的代码复杂问题
+
+比如之前写法如下：
+
+~~~python
+if mood == "happy":
+	amy.color("red")
+	else:
+		if mood == "sad":
+			amy.color("blue")
+		else:
+			amy.color("gray")
+~~~
+
+如果上面都只是写在外面，如下方写法，就会和预计出错
+
+~~~python
+if mood == "happy":
+	amy.color("red")
+if mood == "sad":
+	amy.color("blue")
+else:
+	amy.color("gray")
+~~~
+
+因为最后一个else是和第二个if对应的。所以即便mood = "happy",颜色却是gray
+
+使用elif来解决
+
+~~~python
+if mood == "happy":
+	amy.color("red")
+elif mood == "sad":
+	amy.color("blue")
+else:
+	amy.color("gray")
 ~~~
 

@@ -901,3 +901,22 @@ home()  将画笔返回到原点
 random.randint 必须有两个参数
 
 random.randint(range(359))
+
+### 第六 大练习 房贷计算器
+
+遇到的问题点记录
+
+1. 关于平方的计算方式是**。例如等额本息的公式
+
+   ~~~
+   monthly_payment = round((P*R*(1+R)**N)/((1+R)**N-1),2)
+   ~~~
+
+   
+
+2. print中打印变量是使用%i,%.2f 来绑定
+
+   ~~~python
+   print("EPP等额本金:第  %i  月，需要还款 %.2f" %(n, monthly_payment) )
+   ~~~
+

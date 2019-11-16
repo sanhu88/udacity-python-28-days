@@ -5,6 +5,8 @@ learn Python on Udacity
 
 > 在线运行python 推荐网站 https://trinket.io/
 
+> typora  以```开头 + 语言名(即 : python)，开启代码块，按换行键换行 
+
 ##	第一部分  turtle
 
 **程序**是面向计算机的一组指令。程序由代码行组成。每行告诉计算机关于这些指令的一个特定细节信息。
@@ -936,4 +938,28 @@ random.randint(range(359))
 
 1. 选择自定义安装
 2. 添加python 到环境变量
+
+#### 终端里使用python
+
+- input 函数
+
+~~~python
+input("What's your name?")
+~~~
+
+一般赋值到变量
+
+~~~python
+name = input("What's your name?")
+~~~
+
+input 也可以不传入参数
+
+- print 函数
+
+  如果是要直接输出所见，不进行运算，需要加上双引号
+
+  接受多个参数，以逗号分隔。结果是空格分隔显示
+
+
 

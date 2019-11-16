@@ -920,3 +920,20 @@ random.randint(range(359))
    print("EPP等额本金:第  %i  月，需要还款 %.2f" %(n, monthly_payment) )
    ~~~
 
+
+
+
+
+## 第七课 
+
+### 安装Python
+
+>  每版 Python 的版本号都由三部分数字组成，例如 Python 2.7.9 或 Python 3.6.2。版本号的不同部分表示更改幅度有多大。第一个数字表示存在大型改动，第二个和第三个数字表示存在更小型的改动。 
+
+ 我们将使用 **Python 3.x**（意味着任何以 **3** 开始的版本都可以）。要获取所有最新功能，建议使用 **Python 3.6** 或更高版本。 
+
+ https://www.python.org/downloads/ 
+
+1. 选择自定义安装
+2. 添加python 到环境变量
+

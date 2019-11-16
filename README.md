@@ -961,5 +961,39 @@ input 也可以不传入参数
 
   接受多个参数，以逗号分隔。结果是空格分隔显示
 
+#### 交互模式 interactive mode
 
+三个大于号 起始
+
+交互模式的代码不会保存
+
+退出 win Ctrl+C / Mac Ctrl+D
+
+##### 复合语句
+
+在交互模式下书写复合语句，
+
+~~~python
+>>> for side in range(4):
+...
+~~~
+
+会显示三个点，留意四个空格缩进。
+
+ 要退出循环并运行循环，直接再按一次 Enter 键。 
+
+#### 复习函数
+
+~~~pyth
+def confuse():
+    print ("bears")
+    return 42
+
+confuse()
+print(confuse())
+~~~
+
+一个直接调用函数，只有打印 bears，如果打印调用的结果，就会有两个bears和42
+
+ Python 用 `None` 表示没有值 ，如果函数没有返回值，就返回None 不是什么都不返回。
 

@@ -1021,3 +1021,16 @@ print(more_confused())
 
 ~~~
 
+#### 导入模块
+
+ 在导入时，不要在文件名后面添加文件扩展名 。
+
+ 注意，和调用 `turtle` 模块里的方法一样。我们需要输入 `turtle.right(90)` 和 `turtle.forward(100)`，而不是直接输入 `right(90)` 和 `forward(100)`。 
+
+
+
+~~~python
+import antigravity
+~~~
+
+打开 https://xkcd.com/353/ 网络漫画

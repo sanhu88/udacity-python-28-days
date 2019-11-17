@@ -1034,3 +1034,11 @@ import antigravity
 ~~~
 
 打开 https://xkcd.com/353/ 网络漫画
+
+## 第八课 字符串和列表
+
+#### 变量
+
+变量名 variable name 也叫做标识符 identifier
+
+数字和字符串 没有办法再次赋值，会报错SyntaxError : can`t assign to literal. 因为数字和字符串已经固定了绑定本身，是字面量

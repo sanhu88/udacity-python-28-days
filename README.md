@@ -1078,3 +1078,55 @@ def print_all(strings):
         print(string)
 ~~~
 
+
+
+#### 复习函数和类型
+
+ `input` 函数始终返回字符串 
+
+~~~python
+number = input("Enter a number!")
+~~~
+
+
+
+ 如果你要求 Python 输出无法转换为字符串的对象（例如模块、函数或 turtle），系统就会显示这种带 `<尖括号>` 的消息。但这不是错误消息。 
+
+~~~python
+import turtle
+print(turtle)
+
+~~~
+
+会返回
+
+~~~python
+<module 'turtle' from 'C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python38\\lib\\turtle.py'>
+~~~
+
+#### 长度 len()
+
+起止冒号不计算在内， 字符串中的所有字符都算在内，包括空格 
+
+也使用与list [],项目中的数量
+
+~~~python
+TypeError: object of type 'int' has no len()
+TypeError: object of type 'function' has no len()
+~~~
+
+表情符号
+
+~~~python
+import unicodedata
+>>> unicodedata.lookup("airplane")
+~~~
+
+~~~python
+>>> len("🐍")
+1
+>>> len("蛇 = 🐍")
+5
+~~~
+
+ 表情符号在屏幕上的占据空间通常比字母或数字更宽；在等宽字体中，它们通常占据两个字符。并且占据更多计算机内存。但是 Python 字符串的长度仅取决于其中的字符数量，而不是什么类型的字符： 

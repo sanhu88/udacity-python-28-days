@@ -1163,6 +1163,14 @@ print(no_words[0])
 
 > IndexError: string index out of range
 
+~~~python
+"apple"[-6]
+~~~
+
+也是超出index的范围报错。
+
+练习题
+
 ~~~
 "Art3mis"[3][0][0] 的值是多少？
 ~~~
@@ -1170,3 +1178,21 @@ print(no_words[0])
 > `"Art3mis"[3]` 的值是字符串 `'3'`。`'3'[0]` 的值也是 `'3'`。
 >
 > 对于任何非空字符串 `x`，`x[0]` 的值和 `x[0][0]` ... 甚至 `x[0][0][0][0][0]` 一样。
+
+### 超出范围
+
+交互模式错误中会有一个文件名<stdin>的提示
+
+STDIN 代表 standard input 标准输入的简称，也就是是键盘输入产生的
+
+#### Tracebacks（最近的调用在最后）
+
+ 当函数调用出现（非语法）错误时，Python 将尝试告诉你导致该错误的整个函数调用流程。 
+
+#### indexError
+
+如何避免索引错误：
+
+1. 不使用索引，直接for chr in word
+2. 使用字符串/列表的长度，for n in range(len(word))
+

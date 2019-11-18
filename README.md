@@ -1041,4 +1041,40 @@ import antigravity
 
 变量名 variable name 也叫做标识符 identifier
 
-数字和字符串 没有办法再次赋值，会报错SyntaxError : can`t assign to literal. 因为数字和字符串已经固定了绑定本身，是字面量
+
+
+Literals 字面量
+
+数字和字符串 没有办法再次赋值，会报错SyntaxError : can`t assign to literal. 因为数字和字符串已经固定了绑定本身，是字面量。
+
+#### 字符串
+
+单引号和双引号，都可以使用，但是必须成对使用。
+
+\n 换行，可以一起使用多个
+
+单双引号，可以互换再外面，来显示需要显示内部存在的。
+
+如果内容包含两种，
+
+1. 使用反斜杠转义字符。
+2. 三引号来包含
+
+
+
+练习
+
+~~~python
+>>> def print_all(your_list):
+...     for li in your_list:
+...         print(li,'\n')
+~~~
+
+答案
+
+~~~python
+def print_all(strings):
+    for string in strings:
+        print(string)
+~~~
+

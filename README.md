@@ -1361,3 +1361,18 @@ True
 'The sum of 1 + 2 is 3'
 ~~~
 
+### 布尔值
+
+True False
+
+布尔运算有: and  or  not
+
+![](.\screenshots\true_false-and_or.png)
+
+
+
+ 将其他值当做布尔值 
+
+- 对于数字，零值被视为 false，所有非零值都被视为 true。
+- 对于字符串，空字符串被视为 false，所有非空字符串都被视为 true。
+- 对于列表，空列表被视为 false，所有非空列表都被视为 true。

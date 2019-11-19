@@ -1,13 +1,13 @@
-#未完成
+#完成
 def total_of_three():
-	t = int(0)
-	for i in ['1st','2nd','3rd']:
-	  print(int(t))
-		x = input('type the '+str(i)+' int')
-		print(int(x))
-		#t = t +int(i[0])
-		#t = t + int(x)
-    #print(int(x))
+
+	t = float(0)
+	for i in [1,2,3]:
+		x = input('type the No.'+str(i)+' number(int/float) : ')
+		t += float(x)
+
+	print('Total is : '+str(t))
+		
 total_of_three()
 
 '''

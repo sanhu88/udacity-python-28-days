@@ -1302,3 +1302,62 @@ float() 转化成浮点数 float('56.234')
 >>>
 ~~~
 
+
+
+循环种累加
+
+~~~python
+for i in [1,2,3]:
+		x = input('type the No.'+str(i)+' number(int/float) : ')
+		t += float(x)
+~~~
+
+#### 字符串方法
+
+判断语句，一般可以简写成
+
+~~~python
+return long[:len(short)] == short
+~~~
+
+不需要复杂的 return True /return False
+
+自带的有比较的函数 endswith / startswith 
+
+~~~python
+>>> "banana".startswith("ban")
+True
+>>> "bonobo".startswith("ban")
+False
+~~~
+
+HTML 标签判断
+
+~~~python
+def possible_tag(word):
+    if word.startswith("<") and word.endswith("/>"):
+        print(word,"could maybe be an HTML tag.")
+    else:
+        print(word,"is definitely not an HTML tag(but might contain one)")
+        
+possible_tag("<a apple />")
+~~~
+
+[官方String Methods档案]( https://docs.python.org/3/library/stdtypes.html#string-methods )
+
+摘录
+
+ `find`(*sub*[, *start*[, *end*]]) 
+
+~~~python
+>>> 'Py' in 'Python'
+True
+~~~
+
+ `format`(**args*, ***kwargs*)  和f一样
+
+~~~python
+>>> "The sum of 1 + 2 is {0}".format(1+2)
+'The sum of 1 + 2 is 3'
+~~~
+

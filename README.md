@@ -1475,3 +1475,12 @@ x += 1
 toobig /= 2
 ~~~
 
+### 遍历字符串和列表
+
+~~~python
+for x in "many words":
+    print(x)
+~~~
+
+
+

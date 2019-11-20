@@ -1382,3 +1382,96 @@ True False
  在 Python 中，列表和字符串具有一些共同点。它们都是**序列类型** — 它们表示一系列值，而不是单个值 
 
  **索引**操作、**切片**操作和 **`len` 函数**。因为它们都适用于序列，因此也适用于列表： 
+
+#### 列表方法
+
+~~~python
+words = ["echidna", "dingo", "crocodile", "bunyip"]
+~~~
+
+1. append 
+
+    `append` 方法会将项目添加到列表的末尾 
+
+   ~~~python
+   words.append("platypus")
+   ~~~
+
+   改变但是，不会有返回值
+
+2. extend 
+
+   会把字符串当成是 由单个字符组成的列表
+
+   ~~~python
+   words.extend("abc")
+   ~~~
+
+   传递的是字符串时，在words的结尾添加上，, 'a', 'b', 'c'
+
+   ~~~python
+   words.extend(["kangaroo", "wallaby"])
+   ~~~
+
+   则会在末尾添加 "kangaroo", "wallaby"。 当你将列表传递给 `words.extend` 时，它将该列表中的项目添加到 `words` 中。 
+
+3. reverse
+
+    ~~~python
+   words.reverse()
+    ~~~
+
+   
+
+   `reverse` 方法颠倒了列表的顺序。 
+
+4. sort
+
+   排序
+
+    `sort` 方法会修改列表，使其按顺序排列 
+
+以上4种方法都适用并修改列表，但是不返回任何值。
+
+### 可变性和共享结构
+
+字符串和列表有很多相似的操作，但是列表可以被修改，字符串则不行。
+
+列表可以用append 或者extend 来添加元素；
+
+或者list[0] = new_value 来修改；
+
+用sort来整理顺序
+
+#### mutable 可以改变性（list） / immutable 不可改变性（string就是）
+
+~~~python
+>>> bunch = ['banana', 'banana', 'banana']
+>>> bunches = [bunch, bunch, bunch]
+>>> for b in bunches:
+...     print(b)
+['banana', 'banana', 'banana']
+['banana', 'banana', 'banana']
+['banana', 'banana', 'banana']
+~~~
+
+
+
+ 列表 `[bunch, bunch, bunch]` 包含同一列表的三个引用。 
+
+### 增量赋值
+
+~~~python
+x = x + 1
+#可以缩写成
+x += 1
+~~~
+
+ `x = x + 1` 和 `x += 1` 的结果完全一样。后者称为**增量赋值**语句。 
+
+ 如果有一个叫做 `toobig` 的变量，你希望用其值除以 2 
+
+~~~python
+toobig /= 2
+~~~
+

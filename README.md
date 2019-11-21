@@ -1419,7 +1419,7 @@ words = ["echidna", "dingo", "crocodile", "bunyip"]
 
     ~~~python
    words.reverse()
-    ~~~
+   ~~~
 
    
 
@@ -1483,4 +1483,30 @@ for x in "many words":
 ~~~
 
 
+
+### While循环
+
+会在符合判断语句前一直重复
+
+~~~python
+def password_check():
+    while input("Type your PassWord :") != 'BadPwd':
+        print("Wrong,try again")
+    print("Greattings!")
+password_check()
+~~~
+
+while 和if 不同，可以运行多次。
+
+~~~python
+def count_ch(string,traget):
+    index = 0
+    total =0
+    while index < len(string):
+        if string[index:index+len(traget)] == target:
+            total += 1
+        index += 1
+    print(target,"show ",total," times in",string)
+count_ch("oxen and foxen all live in boxen","l")
+~~~
 

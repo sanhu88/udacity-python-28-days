@@ -1510,3 +1510,43 @@ def count_ch(string,traget):
 count_ch("oxen and foxen all live in boxen","l")
 ~~~
 
+### 无限循环
+
+~~~python
+while True:
+    print('Help! trapped in an infinite loop')
+~~~
+
+使用CTRL+c来中止循环输出。
+
+#### break 语句
+
+~~~python
+def no_repeating():
+    word = []
+    while True:
+        word = input('Input a word')
+        if word in words:
+            print('You type this word already!')
+            break
+        words.append(word)
+    return words
+
+no_repeating()
+~~~
+
+
+
+习题
+
+~~~python
+>>> def find_512():
+...     for x in range(100):
+...         for y in range(100):
+...             if x*y ==512:
+...                 return f'{x}*{y} ==512'
+
+>>> find_512()
+'8*64 ==512'
+~~~
+

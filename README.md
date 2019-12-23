@@ -344,7 +344,9 @@ operators 运算符和operands运算对象/运算数
 
 <img src=".\screenshots\operators_operands.png" alt="operators_operands" style="zoom: 50%;" />
 
-(图片真实存在。如果看不到图片，因为总所周知的原因，你可能要想点办法)
+~~(图片真实存在。如果看不到图片，因为总所周知的原因，你可能要想点办法)~~
+
+图片看不到，更新host试下，[办法连接](https://blog.csdn.net/qq_38232598/article/details/91346392)
 
 ###### 变量也可以参与到算数运算符
 

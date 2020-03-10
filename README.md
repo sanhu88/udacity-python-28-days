@@ -691,6 +691,24 @@ for side in range(4):
 
 > 对于任何数字 y，x % y 的值始终小于 y 本身。
 
+小乌龟画楼梯：
+
+~~~python
+import turtle
+
+amy = turtle.Turtle()
+amy.speed(0)
+amy.width(4)
+amy.color("orange")
+
+for _ in range(10):
+    amy.forward(20)
+    if _ % 2 == 0:
+        amy.left(90)
+    else:
+        amy.right(90)
+~~~
+
 
 
  模运算经常与 `for` 和 `if`语句一起使用 

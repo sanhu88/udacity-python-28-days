@@ -755,6 +755,22 @@ for n in range(540):
 
 函数可以返回多个返回语句。但是被调用时，运行到第一个返回语句后就会停止。除非放在判断语句，比如 if else 中
 
+~~~python
+import turtle
+
+def super_reptile():
+    amy =turtle.Turtle()
+    amy.speed(0)
+    return amy
+
+
+clark = super_reptile()
+clark.forward(100)
+clark.left(45)
+clark.forward(100)
+# up, up, and away!
+~~~
+
 
 
 小练习
@@ -808,7 +824,15 @@ turtle 上的 `forward` 方法仅接受一个实参：如果 `mark` 是 turtle�
 
 always products the same output for a give input.
 
-#### import random
+#### **import random**，不导入，会报错
+
+~~~
+ameError
+Line:12
+Error: name 'random' is not defined
+~~~
+
+
 
 - random.randint 随机选择一个整数，接受两个参数，最小值和最大值.
 
@@ -827,7 +851,31 @@ cards = ["ace", 2, 3, 4, 5, 6, 7, 8, 9, "jack", "queen", "king"]
 mycard = random.choice(cards)
 ~~~
 
+练习：
 
+~~~python
+import turtle
+import random
+colors = ["red", "orange", "yellow", "green", "blue", "purple","white"]
+
+t = turtle.Turtle()
+t.width(4)
+t.speed(0)
+
+for step in range(10):
+    # Change this to use a random number.
+    angle = random.randint(5,150)
+
+    # Change this to use a random color.
+    color = random.choice(colors)
+
+    t.color(color)
+    t.right(angle)
+    t.forward(50)
+
+~~~
+
+![image-20200311153500701](README.assets/image-20200311153500701.png)
 
 ### 不等式
 
@@ -900,6 +948,23 @@ else:
 	amy.color("gray")
 ~~~
 
+### 逻辑运算符
+
+and / or运算符
+
+~~~python
+if x > 0 and x < 10:
+    # Do something
+~~~
+
+支持以上写法，都满足条件才运行,而且支持多个联合起来用
+
+~~~python
+x > 0 and x < 10 and y > 0 and y < 10
+~~~
+
+
+
 ### Turtle边界问题
 
 xcor ，X coordinate : horizontal value
@@ -915,6 +980,35 @@ ycor , Y coordinate : vertical value
 ~~~
 
 home()  将画笔返回到原点 
+
+练习
+
+~~~python
+import turtle
+
+t = turtle.Turtle()
+t.color("lime")
+t.width(3)
+t.penup()
+t.shape("turtle")
+
+for step in range(2000):
+    t.forward(1)
+    # Add your code here
+    if t.xcor() > 20 or t.xcor()< -20:
+        t.right(90)
+~~~
+
+以上有趣的是
+
+~~~python
+ t.right(90)
+ 和
+ t.right(180)
+ 效果基本一致
+~~~
+
+
 
 #### 复习
 
@@ -946,9 +1040,7 @@ random.randint(range(359))
 
 
 
-## 第七课 
-
-### 安装Python
+## 第七课  安装Python
 
 >  每版 Python 的版本号都由三部分数字组成，例如 Python 2.7.9 或 Python 3.6.2。版本号的不同部分表示更改幅度有多大。第一个数字表示存在大型改动，第二个和第三个数字表示存在更小型的改动。 
 
@@ -979,7 +1071,7 @@ input 也可以不传入参数
 
   如果是要直接输出所见，不进行运算，需要加上双引号
 
-  接受多个参数，以逗号分隔。结果是空格分隔显示
+  **接受多个参数，以逗号分隔。结果是空格分隔显示**
 
 #### 交互模式 interactive mode
 
@@ -1013,7 +1105,7 @@ confuse()
 print(confuse())
 ~~~
 
-一个直接调用函数，只有打印 bears，如果打印调用的结果，就会有两个bears和42
+一个直接调用函数，只有打印 bears，如果打印调用的结果，就会有两个bears和42。因为，在交互界面，return不打印，不显示。
 
  Python 用 `None` 表示没有值 ，如果函数没有返回值，就返回None 不是什么都不返回。如下：
 
@@ -1022,7 +1114,25 @@ def more_confused():
     2 + 2
 
 print(more_confused())
+
 ~~~
+
+如果有两个return，只会返回第一个
+
+~~~python
+def say_hello():
+    return "Hello!"
+    return "Goodbye!"
+
+print(say_hello())
+'''
+只有"Hello!" 会显示
+'''
+~~~
+
+
+
+
 
 #### 交互式里的函数
 
@@ -1041,6 +1151,42 @@ print(more_confused())
 
 ~~~
 
+#### 错误类型
+
+操作数和运算符 
+
+~~~python
+>>> 2 + "fish"
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+~~~
+
+
+
+~~~python
+>>> n = input("input a number:")
+input a number:4
+>>> n
+'4'
+>>> n+2
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: can only concatenate str (not "int") to str
+>>>
+~~~
+
+input 总是返回string，解决办法格式化
+
+~~~python
+n = int(input("Please enter a number:"))
+~~~
+
+
+
+
+
 #### 导入模块
 
  在导入时，不要在文件名后面添加文件扩展名 。
@@ -1051,17 +1197,23 @@ print(more_confused())
 
 ~~~python
 import antigravity
+
+打开浏览器，默认 https://xkcd.com/353/ 网络漫画
 ~~~
 
-打开 https://xkcd.com/353/ 网络漫画
 
-## 第八课 字符串和列表
+
+## 第九课 字符串和列表
 
 #### 变量
 
 变量名 variable name 也叫做标识符 identifier
 
-
+~~~python
+>>> "cake" = "yummy"
+  File "<stdin>", line 1
+SyntaxError: cannot assign to literal
+~~~
 
 Literals 字面量
 
@@ -1072,6 +1224,11 @@ Literals 字面量
 单引号和双引号，都可以使用，但是必须成对使用。
 
 \n 换行，可以一起使用多个
+
+- 单引号`'`与双引号`“`
+- 换行符`\ n`
+- 转义符`\`
+- 三引号`"""`
 
 单双引号，可以互换再外面，来显示需要显示内部存在的。
 
@@ -1098,7 +1255,36 @@ def print_all(strings):
         print(string)
 ~~~
 
+ 更复杂的字符串
 
+~~~python
+'''
+"Is it very long?" Alice asked, for she had heard a good deal of poetry that day.
+
+It's long," said the Knight, "but it's very, very beautiful."
+'''
+
+print("""\"Is it very long?" Alice asked, for she had heard a good deal of poetry that day.
+
+It's long," said the Knight, "but it's very, very beautiful.\"""")
+
+'''答案
+print('"Is it very long?" Alice asked, for she had heard a good deal of poetry that day.\n\n"It\'s long," said the Knight, "but it\'s very, very beautiful."')
+
+答案二
+print("""
+"Is it very long?" Alice asked, for she had heard a good deal of poetry that day.
+
+"It's long," said the Knight, "but it's very, very beautiful."
+""")
+'''
+~~~
+
+三引号`"""`可以，四引号`""""`不可以！
+
+SyntaxError: EOL while scanning string literal.
+
+问题出在字符串末尾的四个引号`""""`上。Python将**其中的前三个**视为已到达字符串末尾的信号 — 因此，当它随后遇到第四引号时，它认为我们正在开始一个新的字符串。然后我们再也不会关闭该新字符串，这就是导致错误的原因。
 
 #### 复习函数和类型
 
@@ -1126,7 +1312,7 @@ print(turtle)
 
 #### 长度 len()
 
-起止冒号不计算在内， 字符串中的所有字符都算在内，包括空格 
+起止冒号不计算在内， 字符串中的**所有字符都算在内，包括空格** 
 
 也适用于list [],项目中的数量
 
@@ -1149,7 +1335,60 @@ import unicodedata
 5
 ~~~
 
- 表情符号在屏幕上的占据空间通常比字母或数字更宽；在等宽字体中，它们通常占据两个字符。并且占据更多计算机内存。但是 Python 字符串的长度仅取决于其中的字符数量，而不是什么类型的字符： 
+ 表情符号在屏幕上的占据空间通常比字母或数字更宽；在等宽字体中，它们通常占据两个字符。并且占据更多计算机内存。但是 Python 字符串的长度仅取决于其中的字符数量，而不是什么类型的字符
+
+#### 遍历字符串
+
+for 可以遍历列表和字符串
+
+~~~python
+message = input("What do you have to say, hm?\n")
+
+for ch in message:
+    if ch == "?":
+        print("Sense much curiosity in you, I do.")
+    if ch == "!":
+        print("Enthusiastic, you are.")
+~~~
+
+#### 字符串计数
+
+在开始计数之前，我们必须分配`count`变量的初始值
+
+~~~python
+count = 0
+for ch in "bonobos":
+    if ch == "o":
+        count +=1
+print(count)
+~~~
+
+~~~python
+def count_character(full_srt,search_str):
+    count = 0
+    for ch in full_srt:
+        if ch == search_str:
+            count = count + 1
+    return(count)
+
+
+
+print("Should print a count of 3:")
+print(count_character("oxen and foxen all live in boxen", "x"))
+
+print("Should print a count of 0:")
+print(count_character("that letter isn't here", "x"))
+
+print("Should print a count of 9:")
+print(count_character("the goofy doom of the balloon goons", "o"))
+
+print("Should print a count of 6:")
+print(count_character("papa pony and the parcel post problem", "p"))
+
+print("Should print a count of 0:")
+~~~
+
+
 
 #### 索引 index
 
@@ -1199,11 +1438,67 @@ print(no_words[0])
 >
 > 对于任何非空字符串 `x`，`x[0]` 的值和 `x[0][0]` ... 甚至 `x[0][0][0][0][0]` 一样。
 
+### range 函数
+
+~~~python
+>>> for n in range(4):
+...     print(n)
+0 1 2 3
+~~~
+
+当你传递一个数字时，range会给您返回一个序列，该序列**不包括最大的那个数字**。有时你会听到这被描述为**“exclusive”**范围，因为你给出的数字被*“excluded（排除）”*了。
+
+~~~python
+ for n in range(1,4):
+...     print(n)
+...
+1
+2
+3
+>>> for n in range(97,101):
+...     print(n)
+...
+97
+98
+99
+100
+>>> for n in range(0,10,2):
+...     print(n)
+...
+0
+2
+4
+6
+8
+~~~
+
+range(起始，终结【不包含】,步长【step】)
+
+~~~python
+>>> for n in range(0,10,1.5):
+...     print(n)
+...
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'float' object cannot be interpreted as an integer
+~~~
+
+
+
 ### 超出范围
 
 交互模式错误中会有一个文件名<stdin>的提示
 
 STDIN 代表 standard input 标准输入的简称，也就是是键盘输入产生的
+
+~~~python
+no_words = ""
+print(no_words[0])
+
+IndexError: string index out of range
+~~~
+
+
 
 #### Tracebacks（最近的调用在最后）
 
@@ -1247,32 +1542,53 @@ STDIN 代表 standard input 标准输入的简称，也就是是键盘输入产�
 
 结果都是 loon
 
+~~~python
+>>> "presto"[1024:4096]
+''
+~~~
+
+此表达式将仅包含六个字符的字符串中取出位置从 1024 到 4096 的字符。这看起来像是一定会产生索引错误的代码，但是 Python 只会返回它能取到的一切。它在这些位置上无法获得任何内容，因此仅返回一个空字符串。
+
 #### 特殊情况
 
  如果 `word` 是一个字符串，`word[:]` 将是 `word` 的副本。 
 
  如果切片尝试提取字符串末尾之外的字符，将返回至多能获取的字符，即使什么也没有
 
+~~~python
+def word_triangle(word):
+    # Add your code here
+    for n in range(len(word)):
+        print(word[:-n])
+        
+word = input("type a long word : ")
+word_triangle(word)
+~~~
+
+
+
 ### 字符串操作
 
 #### 连接
 
-+号，可以拼接字符串和空格
+**+号**，可以拼接字符串和空格
 
 不可以拼接字符串和int
 
 前后顺序不同，结果不同
 
-#### 比较和排序
+#### f-字符串
+
+寻找花括号的变量名并替换，f 是formatting的简写
+
+3.6 之后才有，f去寻找花括号的变量的值，可以解决数字不能与字符串相连的
 
 ~~~py
 name = 'Burt'
 f"What your {name}?"
 ~~~
 
-寻找花括号的变量名并替换，f 是formatting的简写
-
-
+不需要拼接用的加号和引号
 
 以下交互模式
 
@@ -1280,8 +1596,54 @@ f"What your {name}?"
 >>> import math
 >>> f"PI is about{math.pi:0.6}"
 'PI is about3.14159'
->>>
+>>> 6代表总共六位数的精度
 ~~~
+
+#### 字符串和数字转换
+
+int() 和float()
+
+~~~python
+ n = int(input("Please enter a number: "))
+~~~
+
+字符串不能进行加法运算 TypeError 错误
+
+~~~python
+>>> n =7
+>>> print('hello'+n)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: can only concatenate str (not "int") to str
+
+~~~
+
+3个数求和
+
+~~~python
+def inputnumbers():
+    arry={}
+    total = 0
+    for n in range(3):
+       #arry[n] = int(input(f"input the No.{n} number: \n"))
+       total += int(input(f"input the No.{n+1} number: \n"))
+    
+    print(total)
+inputnumbers()
+'''
+n1 = input("Enter a number: ")
+n2 = input("Enter another number: ")
+n3 = input("Enter a third number: ")
+sum = int(n1) + int(n2) + int(n3)
+print(f"{n1} + {n2} + {n3} = {sum}")
+'''
+~~~
+
+
+
+
+
+### 比较和排序
 
  `==`、`<` 和 `>` 等比较运算符在字符串上的效果和数字一样 
 
@@ -1297,7 +1659,68 @@ print( ord('a')) #97
 
  `'A'` 开头的字符串将 `<` 任何以小写的 `'a'` 开头的字符串 
 
-#### 字符串和数字互换
+
+
+### starts_with
+
+~~~python
+# Add your function definition here
+def starts_with(s1, s2):
+    return (s1[0] == s2[0])
+# A call like this should return True:
+print(starts_with("banana", "bread"))
+
+# And one like this should return False:
+print(starts_with("zebonkey", "kiwi"))
+
+'''
+def starts_with(s1, s2):
+    if s1[0] == s2[0]:
+        return True
+    else:
+        return False
+'''
+~~~
+
+第二版
+
+~~~python
+# Write your function definition here.
+def starts_with(long,short):
+    for n in range(len(short)):
+        return(long[n] == short[n])
+# A call like this should return True:
+print(starts_with("apple", "app"))
+
+# And one like this should return False:
+print(starts_with("manatee", "mango"))
+'''
+def starts_with(long, short):
+    for position in range(len(short)):
+        if long[position] != short[position]:
+            return False
+    return True
+'''
+~~~
+
+第三版
+
+~~~python
+# Write your function definition here.
+def starts_with(long,short):
+    return(long[:len(short)]==short)
+# A call like this should return True:
+print(starts_with("apple", "app"))
+
+# And one like this should return False:
+print(starts_with("manatee", "mango"))
+~~~
+
+第一个使用字符串索引操作，因此，当`position`变得大于`short`的长度时，会产生`IndexError`。另外两个使用切片，不产生`IndexError`。
+
+
+
+### 字符串和数字互换
 
 字符串和数字无法用+号直接拼接
 
@@ -1343,7 +1766,7 @@ return long[:len(short)] == short
 
 不需要复杂的 return True /return False
 
-自带的有比较的函数 endswith / startswith 
+**自带的有比较的函数 endswith / startswith** 
 
 ~~~python
 >>> "banana".startswith("ban")
@@ -1398,11 +1821,44 @@ True False
 - 对于字符串，空字符串被视为 false，所有非空字符串都被视为 true。
 - 对于列表，空列表被视为 false，所有非空列表都被视为 true。
 
-### 列表 [ ]
+### 课程10.列表 [ ]和字符串
 
  在 Python 中，列表和字符串具有一些共同点。它们都是**序列类型** — 它们表示一系列值，而不是单个值 
 
  **索引**操作、**切片**操作和 **`len` 函数**。因为它们都适用于序列，因此也适用于列表： 
+
+len函数
+
+~~~python
+# Add your code here.
+def total_length(list):
+    total =0
+    for n in list:
+        total += len(n)
+    return(total)
+        
+# Should return 6:
+print(total_length(['foo', 'bar']))
+
+# Should return 0 (it's an empty list):
+print(total_length([]))
+
+# Should return 8:
+print(total_length(['balloons']))
+
+# Should return 0 (it has four empty strings):
+print(total_length(["", '', "", '']))
+
+'''
+def total_length(list_of_strings):
+    total = 0
+    for string in list_of_strings:
+        total = total + len(string)
+    return total
+'''
+~~~
+
+
 
 #### 列表方法
 
@@ -1436,9 +1892,17 @@ words = ["echidna", "dingo", "crocodile", "bunyip"]
 
    则会在末尾添加 "kangaroo", "wallaby"。 当你将列表传递给 `words.extend` 时，它将该列表中的项目添加到 `words` 中。 
 
+   append 是看做一个整体添加，哪怕是一个list，整体最为一个新的元素，添加到被添加的list
+
+   ​	将其参数作为**单个项目**添加到列表的末尾。它只会在列表中添加**一个项**。
+
+   extend会先拆开，字符串或者是list，然后一个一个的添加到末尾
+
+   ​	将其参数视为一个序列，并**将序列中的每个项目添加到列表的末尾**。换句话说，它将项目的**序列**添加到列表中。
+
 3. reverse
 
-    ~~~python
+   ~~~python
    words.reverse()
    ~~~
 
@@ -1454,9 +1918,9 @@ words = ["echidna", "dingo", "crocodile", "bunyip"]
 
 以上4种方法都适用并修改列表，但是不返回任何值。
 
-### 可变性和共享结构
+#### 可变性和共享结构
 
-字符串和列表有很多相似的操作，但是列表可以被修改，字符串则不行。
+字符串和列表有很多相似的操作，但是**列表可以被修改，字符串则不行**。
 
 列表可以用append 或者extend 来添加元素；
 
@@ -1530,6 +1994,18 @@ def count_ch(string,traget):
     print(target,"show ",total," times in",string)
 count_ch("oxen and foxen all live in boxen","l")
 ~~~
+
+~~~python
+import time
+n = 10
+while n > 0:
+    print(n)
+    time.sleep(1)	#暂停一秒再进入下一个循环
+    n -= 1
+print("Blastoff!")
+~~~
+
+
 
 ### 无限循环
 

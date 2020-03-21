@@ -1971,7 +1971,7 @@ for x in "many words":
 
 ### While循环
 
-会在符合判断语句前一直重复
+会在符合判断语句，如果满足一直重复
 
 ~~~python
 def password_check():
@@ -2005,7 +2005,12 @@ while n > 0:
 print("Blastoff!")
 ~~~
 
+#### for循环和while循环
 
+1. for 要针对一个变量，比如 for n in rang()
+2. for 会循环全部范围，一般使用if判断语句去提前中断
+3. while 要为循环使用变量，则必须使用`index = 0`行创建一个变量，然后在循环中去处理
+4. `for`循环到达序列末尾（如列表末尾）会自动停止，但是while循环只有在其条件满足时才停止
 
 ### 无限循环
 

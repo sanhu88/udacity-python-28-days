@@ -2068,7 +2068,7 @@ def is_substring(short, long):
     return False
 ~~~
 
-### 更多字符串方法：
+### 10-15 更多字符串方法：
 
 1. in 查找是否存在 子字符串，对于list是否是一个元素
 
@@ -2125,4 +2125,21 @@ def is_substring(short, long):
 3. 单词 "chocolate" 第一次在小说里的哪处出现？
 
    tale.find("chocolate")
+
+### 10-16 Join方法
+
+~~~python
+"-".join("cat")
+'c-a-t'
+~~~
+
+~~~python
+def breakify(str):
+    return (' <br> '.join(str))
+
+lines = ["Haiku frogs in snow",
+         "A limerick came from Nantucket",
+         "Tetrametric drum-beats thrumming, Hiawathianic rhythm."]
+print(breakify(lines))
+~~~
 

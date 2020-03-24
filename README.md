@@ -2068,3 +2068,61 @@ def is_substring(short, long):
     return False
 ~~~
 
+### 更多字符串方法：
+
+1. in 查找是否存在 子字符串，对于list是否是一个元素
+
+   ~~~python
+   >>> [2,3] in [1,2,3,4,]
+   False
+   >>> [2,3] in [1,[2,3],4,]
+   True
+   #所以list本身不in 本身
+   >>> [1,2,3,4] in [1,2,3,4]
+   False
+   ~~~
+
+2. not in 与in 相反
+
+3. find 找出sub字段，返回indx值，不存在的话返回-1
+
+   ~~~python
+   >>> a=[1,2,3,4]
+   >>> b=[2,3]
+   a.find(b)
+   Traceback (most recent call last):
+     File "<stdin>", line 1, in <module>
+   AttributeError: 'list' object has no attribute 'find'
+   ~~~
+
+4. count 返回不重叠的次数，处理list时，与in一致，也是元素匹配，不是简单值的符合
+
+   ~~~python
+   >>> a=[1,2,3,4]
+   >>> b=[2,3]
+   >>> a.count(b)
+   0
+   >>> c=[1]
+   >>> a.count(c)
+   0
+   >>> d=1
+   >>> a.count(d)
+   1
+   ~~~
+
+练习：
+
+在双城记中寻找巧克力
+
+1. 单词 "chocolate" 在小说里出现了多少次？
+
+   tale.count("chocolate")
+
+2. 是 或 否：单词 "chocolate" 是否出现在了小说里？
+
+   "chocolate" in tale
+
+3. 单词 "chocolate" 第一次在小说里的哪处出现？
+
+   tale.find("chocolate")
+

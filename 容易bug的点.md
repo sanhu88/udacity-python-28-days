@@ -23,5 +23,7 @@
    >>> print(f"{d} %s"% ('ok'))
    ~~~
 
-   
+6. 使用return返回true或者是false比较对后续使用友好；print对输出友好
+
+7. 
 

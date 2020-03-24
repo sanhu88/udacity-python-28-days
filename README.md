@@ -2163,3 +2163,33 @@ print(output)
 ~~~
 
 【待更新】用for循环没有改写成功
+
+##  11 管理文件
+
+### 11-1.文件
+
+文件在删除前持久存储在硬盘，可以被多个程序调用
+
+### 11-2 ~3 整理照片
+
+任务：具有地点名称的照片，进行文件夹整理
+
+![image-20200324165131502](README.assets/image-20200324165131502.png)
+
+ls在python中不可用，python有自有的函数
+
+### 11-4 ~5 OS模块
+
+1. os.mkdir 创建新的文件夹
+2. os.rename  移动文件到另外一个文件夹
+3. os.listdir 列出文件夹文件
+
+使用前记得一定要导入，而且函数前要冠名
+
+~~~python
+import os
+os.listdir()
+os.mkdir('new_dir')
+os.rename('some.txt','new_dir/some.txt')
+~~~
+

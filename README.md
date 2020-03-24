@@ -2023,6 +2023,8 @@ while True:
 
 #### break 语句
 
+还有一种退出无限循环的方式。在 `while` 或 `for` 循环里，你可以使用 `break` 语句立即退出循环
+
 ~~~python
 def no_repeating():
     word = []
@@ -2054,4 +2056,15 @@ no_repeating()
 
 ### 查找子字符串 
 
-substring 子字符串
+substring search 子字符串搜索
+
+~~~python
+def is_substring(short, long):
+    index = 0
+    while index < (len(long) - len(short) + 1):
+        if long[index : index + len(short)] == short:
+            return True
+        index += 1
+    return False
+~~~
+

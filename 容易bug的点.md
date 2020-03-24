@@ -25,5 +25,10 @@
 
 6. 使用return返回true或者是false比较对后续使用友好；print对输出友好
 
-7. 
+7. ~~~
+   TypeError: 'type' object is not subscriptable
+   出现了这种错误，直接找报错行中的中括号附近有无错误即可。
+   ~~~
+
+8. 
 

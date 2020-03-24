@@ -2143,3 +2143,23 @@ lines = ["Haiku frogs in snow",
 print(breakify(lines))
 ~~~
 
+### 10-17 修改字符串
+
+要明确一点，字符串是无法直接修改的。只能迂回的方法
+
+~~~python
+string = "Hello world!"
+print(string.split(' '))
+output = [] # Create empty list
+index = 0
+while index < len(string):
+    output.append(string[index]) # Append current character
+    index += 1 # Move on to next character
+
+print(output)
+>>>
+['Hello', 'world!']
+['H', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd', '!']
+~~~
+
+【待更新】用for循环没有改写成功

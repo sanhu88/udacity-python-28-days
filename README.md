@@ -2211,3 +2211,20 @@ PHP也是这两个函数
 5. os.chdir() 与 cd 命令
 6. win 系统文件path 用的是反斜杠 \ ,linux是斜杠 /
 7. os.path.join('Downloads','amazing_thing.py') 会总转换 win/ linux系统的文件夹连接符
+
+### 11-8 拆分文件名
+
+`split` 操作根据你所选的字符拆分字符串，在此示例中是空格！
+
+~~~python
+str.split(" ")
+~~~
+
+练习：
+
+sentence = "I need a banana split!"
+
+sentence.split(" ")
+
+["I", "need", "a", "banana", "split!"]
+

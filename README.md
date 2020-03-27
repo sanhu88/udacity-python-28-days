@@ -2210,7 +2210,7 @@ PHP也是这两个函数
 4. os.rename() 与 mv 命令 移动或修改 文件或 文件夹的名
 5. os.chdir() 与 cd 命令
 6. win 系统文件path 用的是反斜杠 \ ,linux是斜杠 /
-7. os.path.join('Downloads','amazing_thing.py') 会总转换 win/ linux系统的文件夹连接符
+7. os.path.join('Downloads','amazing_thing.py') 会总转换 win/ linux系统的文件夹连接符,注意os.pth.join(路径，文件名)
 
 ### 11-8 拆分文件名
 
@@ -2219,6 +2219,13 @@ PHP也是这两个函数
 ~~~python
 str.split(" ")
 ~~~
+
+~~~python
+def extract_place(fname):
+    return fname.split('_')[1]
+~~~
+
+
 
 练习：
 
@@ -2238,4 +2245,24 @@ make_place_directories('beijing','shanghai')
 ~~~
 
 注意，不可出现重复文件夹，会中止创建剩下的
+
+11-10 整理照片
+
+~~~python
+def organize_photos(directory):
+    #从文件中获取所有地点名称
+    ##第一确保切换到了指定目录
+    os.chdir(directory)
+    places =[]
+    all_files = os.listdir()
+    for fname in all_files:
+        if extract_place(fname) not in places:
+            places.append(extract_place(fname))
+    #创建各个地点文件夹
+    make_place_directories(places)
+        
+    #os.rename() 整理到对应的文件夹
+    for fname in all_files:
+        os.rename(fname,os.path.join(extract_place(fname),fname))
+~~~
 

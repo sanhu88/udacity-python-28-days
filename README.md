@@ -2228,3 +2228,14 @@ sentence.split(" ")
 
 ["I", "need", "a", "banana", "split!"]
 
+### 11-9 创建文件夹
+
+~~~python
+def make_place_directories(places):
+    for place in places:
+        os.mkdir(place)
+make_place_directories('beijing','shanghai')
+~~~
+
+注意，不可出现重复文件夹，会中止创建剩下的
+

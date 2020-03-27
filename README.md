@@ -2193,3 +2193,21 @@ os.mkdir('new_dir')
 os.rename('some.txt','new_dir/some.txt')
 ~~~
 
+### 11-6 相对路径和当前工作目录
+
+1. os.getcwd() 当前工作目录
+2. os.chdir() 更换目录
+
+PHP也是这两个函数
+
+使用os.rename()改变目录时，需要匹配对目录。比如，需要前换到对应的目录为当前工作目录
+
+### 11-7 os 函数和 shell 命令
+
+1. python中的 os.getcwd() 和shell的pwd相似，而且os.getcwd()可以传递给参数
+2. os.listdir()  与 ls 命令
+3. os.mkdir() 与 mkdir 命令
+4. os.rename() 与 mv 命令 移动或修改 文件或 文件夹的名
+5. os.chdir() 与 cd 命令
+6. win 系统文件path 用的是反斜杠 \ ,linux是斜杠 /
+7. os.path.join('Downloads','amazing_thing.py') 会总转换 win/ linux系统的文件夹连接符

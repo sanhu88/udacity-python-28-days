@@ -2205,11 +2205,24 @@ PHP也是这两个函数
 ### 11-7 os 函数和 shell 命令
 
 1. python中的 os.getcwd() 和shell的pwd相似，而且os.getcwd()可以传递给参数
+
 2. os.listdir()  与 ls 命令
+
 3. os.mkdir() 与 mkdir 命令
+
 4. os.rename() 与 mv 命令 移动或修改 文件或 文件夹的名
+
+   ~~~python
+   os.rename(src , dst)
+   src 参数用于指定要进行重命名的目录或文件；dst 参数用于指定重命名后的目录或文件。
+   ~~~
+
+   
+
 5. os.chdir() 与 cd 命令
+
 6. win 系统文件path 用的是反斜杠 \ ,linux是斜杠 /
+
 7. os.path.join('Downloads','amazing_thing.py') 会总转换 win/ linux系统的文件夹连接符,注意os.pth.join(路径，文件名)
 
 ### 11-8 拆分文件名
@@ -2246,7 +2259,7 @@ make_place_directories('beijing','shanghai')
 
 注意，不可出现重复文件夹，会中止创建剩下的
 
-11-10 整理照片
+### 11-10 整理照片
 
 ~~~python
 def organize_photos(directory):
@@ -2266,3 +2279,36 @@ def organize_photos(directory):
         os.rename(fname,os.path.join(extract_place(fname),fname))
 ~~~
 
+### 11-11 脚本标注
+
+运行python的不同方式包括：
+
+* 命令行
+* import导入在另外一个文件使用
+
+在使用import 导入模块时，python会运行此模块所有代码
+
+Dunder变量
+
+~~~python
+if __name__ == '__main__':
+    xxxxx
+    organize_photos("C:/Users/Admin/Desktop/photos")
+~~~
+
+**如果模块是被直接运行的，则xxx代码块被运行，如果模块是被导入的，则xxx代码块不被运行**。这样别人引用的时候，就不会改变别人的photos的文件夹下内容
+
+> 有时我们写了可以直接被执行的模块（.py文件），但是在另一个程序中调用它时，我们其实只是想用一用里面写好的函数，而不是全都执行一遍。那么我们就可以把执行的部分放到if __name__ == '__main__' 中进行判断。
+>
+> 如果if __name__ == '__main__' 为真，就说明我们是在直接执行这个模块，那么所有的操作都要运行一遍；但如果为假，就说明我们是引用了这个模块，只有在需要用到它的函数时，才会被调用执行。
+>
+> 
+>
+> 作者：师师
+> 链接：https://www.zhihu.com/question/49136398/answer/613131588
+> 来源：知乎
+> 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+在命令行中为if将会执行此代码
+
+如果是import导入到别的程序，if的判断值为false，函数将不会被调用

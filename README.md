@@ -2537,3 +2537,222 @@ if __name__ == "__main__":
     check_file("my_story.txt")
 ~~~
 
+#### 13-19 标点符号
+
+因为英文标点符号和单词想是相连的。split 空格分开后会遗漏。
+
+~~~python
+import string    #注意使用前要先将string模块导入
+ 
+>>> s="We met at the wrong time, but separated at the right time. The most urgen
+t is to take the most beautiful scenery!!! the deepest wound was the most real e
+motions."
+>>> for i in s:
+...     if i in string.punctuation:  #如果字符是标点符号的话就将其替换为空格
+...         s = s.replace(i," ")
+...
+>>> s
+'We met at the wrong time  but separated at the right time  The most urgent is t
+o take the most beautiful scenery    the deepest wound was the most real emotion
+
+~~~
+
+来自：[CSDN](https://blog.csdn.net/kongsuhongbaby/article/details/83181768)
+
+
+
+练习：
+
+如果你针对字符串向 `strip` 函数传递 `string.punctuation`，该字符串里的所有标点将被删除
+
+~~~python
+import string
+rude_words =["crap","darn"]
+def check_line(line):
+    rude_count=0
+    content_words = line.split(" ")
+        for word in content_words:
+            if word in rude_words:
+                rude_count +=1
+                print(f"Found rude word : {word}")
+        return rude_count
+def check_file(filename):
+	with open(filename) as myfile:
+        
+        count =0
+        for line in myfile:
+            count += check_line(line)
+        if count ==0:
+            print("No rude words")
+        
+if __name__ == "__main__":
+    check_file("my_story.txt")
+~~~
+
+strip 是去除首位匹配的字符：
+
+~~~
+str = "00000003210Runoob01230000000"; 
+print str.strip( '0' );  # 去除首尾字符 0
+~~~
+
+
+
+`string.punctuation` 就一个包含了各种符号的参数
+
+~~~
+string.punctuation
+'!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
+~~~
+
+所以修改后：
+
+~~~python
+import string
+rude_words = ["crap", "darn"]
+
+
+def check_line(line):
+    rude_count = 0
+    content_words = line.split(" ")
+    for word in content_words:
+        word = word.strip(string.punctuation)
+        if word in rude_words:
+            rude_count += 1
+            print(f"Found rude word : {word}")
+    return rude_count
+
+
+def check_file(filename):
+    with open(filename) as myfile:
+        count = 0
+        for line in myfile:
+            count += check_line(line)
+        if count == 0:
+            print("No rude words")
+
+if __name__ == "__main__":
+    check_file("my_story.txt")
+~~~
+
+#### 11-20 首字母大写的匹配
+
+lower()函数全部转为小写，此外还有
+
+* upper()全部转为大写
+
+  ~~~python
+  str ='Ok Nice to Meet you'
+  str.upper()
+  'OK NICE TO MEET YOU'
+  ~~~
+
+* swapcase() 方法用于对字符串的大小写字母进行转换
+
+  ~~~python
+  str ='Ok Nice to Meet you'
+  str.swapcase()
+  'oK nICE TO mEET YOU'
+  ~~~
+
+* title() 方法返回"标题化"的字符串,就是说所有单词都是以大写开始
+
+  ~~~python
+  str ='Ok Nice to Meet you'
+  str.title()
+  'Ok Nice To Meet You'
+  ~~~
+
+* count 计数
+
+  ~~~python
+  str ='Ok Nice to Meet you'
+  str.count('o')
+  2
+  ~~~
+
+  修改后
+
+  ~~~python
+  import string
+  rude_words = ["crap", "darn"]
+  
+  
+  def check_line(line):
+      rude_count = 0
+      content_words = line.split(" ")
+      for word in content_words:
+          word = word.strip(string.punctuation)
+          if word.lower() in rude_words:
+              rude_count += 1
+              print(f"Found rude word : {word}")
+      return rude_count
+  
+  
+  def check_file(filename):
+      with open(filename) as myfile:
+          count = 0
+          for line in myfile:
+              count += check_line(line)
+          if count == 0:
+              print("No rude words")
+  
+  if __name__ == "__main__":
+      check_file("my_story.txt")
+  ~~~
+
+### 11-21 写入文件
+
+
+
+练习
+
+~~~python
+>>> with open("newfile.txt","w") as newf:
+...     i = 0
+...     while i< 31 :
+...         newf.write(f"{i}")
+...         i +=1
+... 
+
+>>> with open("newfile.txt") as newf:
+...     for line in newf:
+...         print(line)
+... 
+0123456789101112131415161718192021222324252627282930
+
+>>> os.listdir()
+['newfile.txt', 'read.txt', '2nd-new.txt']
+
+>>>with open("read.txt") as orig:
+...     with open("2nd-new.txt","w") as cop:
+...         for line in orig:
+...             cop.write(f"{line}")
+... 
+72
+>>> with open("2nd-new.txt") as file2:
+...     for line in file2:
+...         print(line)
+... 
+Reading files is cool, but don't forget to close them when you're done!
+~~~
+
+答案：
+
+~~~python
+with open("numbers.txt", "w") as writer:
+    # Write even numbers from 0 to 30
+    for num in range(0, 31):
+        if num % 2 == 0:
+            writer.write(f"{num}\n")
+
+# Copy contents of one file to another
+with open("read.txt") as reader:
+    with open("copy.txt") as copy:
+        copy.write(reader.read())
+~~~
+
+上述代码：
+
+* 如果不存在read.txt程序崩溃
+* 如果 read.txt 太大，放不进内存，崩溃

@@ -2312,3 +2312,50 @@ if __name__ == '__main__':
 在命令行中为if将会执行此代码
 
 如果是import导入到别的程序，if的判断值为false，函数将不会被调用
+
+### 11-12 pycodestyle
+
+~~~python
+C:\Users\Admin>pip install pycodestyle
+Collecting pycodestyle
+  Downloading https://files.pythonhosted.org/packages/0e/0c/04a353e104d2f324f8ee5f4b32012618c1c86dd79e52a433b64fceed511b/pycodestyle-2.5.0-py2.py3-none-any.whl (51kB)
+     |████████████████████████████████| 51kB 363kB/s
+Installing collected packages: pycodestyle
+Successfully installed pycodestyle-2.5.0
+~~~
+
+~~~python
+D:\Online\Udacity\udacity-python-28-days> pycodestyle 11-10_organize_photos.py
+11-10_organize_photos.py:2:1: E302 expected 2 blank lines, found 0
+11-10_organize_photos.py:4:1: E302 expected 2 blank lines, found 0
+11-10_organize_photos.py:6:1: E302 expected 2 blank lines, found 0
+11-10_organize_photos.py:10:1: E302 expected 2 blank lines, found 1
+11-10_organize_photos.py:13:13: E225 missing whitespace around operator
+11-10_organize_photos.py:23:24: E231 missing whitespace after ','
+11-10_organize_photos.py:23:43: E231 missing whitespace after ','
+11-10_organize_photos.py:24:9: E265 block comment should start with '# '
+11-10_organize_photos.py:25:1: E302 expected 2 blank lines, found 0
+11-10_organize_photos.py:28:13: E225 missing whitespace around operator
+11-10_organize_photos.py:31:80: E501 line too long (89 > 79 characters)
+11-10_organize_photos.py:34:5: E265 block comment should start with '# '
+11-10_organize_photos.py:38:31: E225 missing whitespace around operator
+11-10_organize_photos.py:42:28: E231 missing whitespace after ','
+11-10_organize_photos.py:42:47: E231 missing whitespace after ','
+11-10_organize_photos.py:43:13: E265 block comment should start with '# '
+11-10_organize_photos.py:44:1: E265 block comment should start with '# '
+11-10_organize_photos.py:45:1: E305 expected 2 blank lines after class or function definition, found 0
+11-10_organize_photos.py:45:46: W292 no newline at end of file
+~~~
+
+保存后可以急需验证，没有消息就是好消息
+
+练习
+
+~~~python
+$ pycodestyle spin.py
+spin.py:5:20: E201 whitespace after '('
+spin.py:5:24: E202 whitespace before ')'
+spin.py:13:3: E111 indentation is not a multiple of four
+
+~~~
+

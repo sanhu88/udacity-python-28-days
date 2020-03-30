@@ -2469,3 +2469,71 @@ if rude_count ==0:
     print("No rude words")
 ~~~
 
+问题点：每一个单词都要和全文进行一次匹配。
+
+优点：比纯英文的split 空格分开来说，可以查找到没有被空格分开的关键字
+
+#### 13-18 一次读取一个单词
+
+思路把内容split后保存到内存
+
+~~~python
+rude_words =["crap","darn"]
+
+#os.chdir(dir)
+with open('my_story.txt') as myfile:
+    contents = myfile.read()
+    rude_count = 0
+    content_words = contents.split(" ")
+    for word in content_words:
+        if word in rude_words:
+            rude_count +=1
+            print(f"Found rude word : {word}")
+if rude_count ==0:
+    print("No rude words")
+~~~
+
+这样修改，全文就只读取一遍，全文的每个单词会跟检查list进行检查。
+
+为了避免过大文件直接载入内存，可以一行一行的读取内容。使用for来读取就是一行一行的方式
+
+~~~python
+rude_words =["crap","darn"]
+
+#os.chdir(dir)
+with open('my_story.txt') as myfile:
+    rude_count =0
+    for line in myfile:
+        content_words = contents.split(" ")
+        for word in content_words:
+            if word in rude_words:
+                rude_count +=1
+                print(f"Found rude word : {word}")
+if rude_count ==0:
+    print("No rude words")
+~~~
+
+然后，def 函数封装
+
+~~~python
+rude_words =["crap","darn"]
+def check_line(line):
+    rude_count=0
+    content_words = line.split(" ")
+        for word in content_words:
+            if word in rude_words:
+                rude_count +=1
+                print(f"Found rude word : {word}")
+        return rude_count
+def check_file(filename):
+	with open(filename) as myfile:
+        count =0
+        for line in myfile:
+            count += check_line(line)
+        if count ==0:
+            print("No rude words")
+        
+if __name__ == "__main__":
+    check_file("my_story.txt")
+~~~
+

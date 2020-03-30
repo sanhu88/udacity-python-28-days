@@ -2369,7 +2369,7 @@ spin.py:13:3: E111 indentation is not a multiple of four
 
 ~~~python
 my_story = open("admin/my_story.txt")
-contents = my.story.red() 
+contents = my.story.read() 
 contents #将输出内容字符串
 ~~~
 
@@ -2410,5 +2410,45 @@ Traceback (most recent call last):
 OSError: [Errno 24] Too many open files: 'somefile.txt'
 ~~~
 
+练习：
 
+~~~python
+>>> with open(read.txt) as getread:
+...     print(getread)
+... 
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'str' object has no attribute 'txt'
+~~~
+
+上面报错，文件名缺少了引号
+
+~~~python
+>>> with open('read.txt') as read:
+...     print(read)
+... 
+<_io.TextIOWrapper name='read.txt' mode='r' encoding='UTF-8'>
+~~~
+
+上面报错，因为line 2 没有read()方法，如果还不对，可以参考下面
+
+~~~python
+>>> with open('read.txt','r',encoding='UTF-8') as read:
+...     print(read.read())
+... 
+Reading files is cool, but don't forget to close them when you're done!
+~~~
+
+
+
+正确答案：
+
+~~~python
+>>> with open('read.txt') as read:
+...     print(read.read())
+... 
+Reading files is cool, but don't forget to close them when you're done!
+
+>>> 
+~~~
 

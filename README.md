@@ -2452,3 +2452,20 @@ Reading files is cool, but don't forget to close them when you're done!
 >>> 
 ~~~
 
+#### 13-17 低效率方案
+
+~~~python
+rude_words =["crap","darn"]
+
+#os.chdir(dir)
+with open('my_story.txt') as myfile:
+    contents = myfile.read()
+    rude_count = 0
+    for rude in rude_words:
+        if rude in contents:
+            rude_count +=1
+            print(f"Found rude word : {rude}")
+if rude_count ==0:
+    print("No rude words")
+~~~
+

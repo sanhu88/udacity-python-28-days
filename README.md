@@ -2359,3 +2359,56 @@ spin.py:13:3: E111 indentation is not a multiple of four
 
 ~~~
 
+### 11-13 _14 脏话过滤器
+
+过滤的文件内的一段文字，不是文件名
+
+解决方案，将内容split成字符，然后匹配。而不是，一个一个的字符去循环匹配。
+
+#### 13-15_16 打开并读取文件 关闭文件
+
+~~~python
+my_story = open("admin/my_story.txt")
+contents = my.story.red() 
+contents #将输出内容字符串
+~~~
+
+~~~python
+
+~~~
+
+~~~python
+my.story.close()
+~~~
+
+关闭后就不可以再打开。
+
+使用with 语句读取后，自动关闭
+
+~~~python
+with open(my_story.py) as my_story:
+    print(my_story)
+
+~~~
+
+测试系统最多可以打开多少文件
+
+~~~python
+>>> import os
+>>> os.getcwd()
+'D:\\Online\\Udacity\\udacity-python-28-days'
+>>> count =0
+>>> files =[]
+>>> while True:
+...     count +=1
+...     print(f"opening files # {count}")
+...     files.append(open("somefile.txt"))
+...
+opening files # 8190
+Traceback (most recent call last):
+  File "<stdin>", line 4, in <module>
+OSError: [Errno 24] Too many open files: 'somefile.txt'
+~~~
+
+
+

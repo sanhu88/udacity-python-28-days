@@ -3025,5 +3025,97 @@ KeyError: 'e'
   print(d)
   ~~~
 
+12-11 遍历字典
+
+~~~python
+favorites = {'color': 'purple', 'number': 42, 'animal': 'turtle', 'language': 'python'}
+for item in favorites:
+    print(item)
+
+color
+number
+animal
+language
+~~~
+
+如果我们只是遍历字典，Python 的默认行为是遍历字典里的键
+
+* 获取字典的键值
+
+  ~~~python
+  for key in favorites.keys():
+      print(key)
+  ~~~
+
+也是返回key，是不指定的情况下默认行为
+
+* 获取字典的值
+
+  ~~~python
+  for value in favorites.values():
+  ~~~
+
+* 获取 完整的键值对 
+
+  ~~~python
+  for entry in favorites.items():
+     print(entry)
   
+  ('color', 'purple')
+  ('number', 42)
+  ('animal', 'turtle')
+  ('language', 'python')
+  ~~~
+
+  注意，代码以键值对的形式输出了每个条目，并且用逗号分隔
+
+  ~~~python
+  for key, value in favorites.items():
+      print(key)
+      print(value)
+  ~~~
+
+~~~python
+for key, value in favorite.items():
+    print(f"my favorite {key} is {value}")
+~~~
+
+#### 元组
+
+代码 `('color', 'purple')` 看起来像个列表，但是有小括号 `( )`，而不是方括号 `[ ]`。
+
+这是一种数据结构类型，叫做**元组**。
+
+* 元组属于序列，和列表一样。
+
+* 但是它们不可变，对于列表，创建好列表后可以更改列表里的值。对于元组则不行。
+
+练习
+
+~~~python
+str = 'it appears that the the appears the most in the sentence'
+dict = {}
+list = str.split(" ")
+for n in list:
+    dict[n] =str.count(n)
+for key,value in dict.items():
+    #print(f"{key} show in str {value} times")
+    print(f"\'{key}\' appears {value} time(s) in the string")
+
+~~~
+
+答案
+
+~~~python
+str = 'it appears that the the appears the most in the sentence'
+dict = {}
+list = str.split(" ")
+for word in list:
+    if word in dict:
+        dict[word] = dict[word] + 1
+    else:
+        dict[word] = 1
+for key, value in dict.items():
+    print(f"\'{key}\' appears {value} time(s) in the string")
+~~~
 

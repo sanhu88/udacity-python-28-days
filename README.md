@@ -3119,3 +3119,111 @@ for key, value in dict.items():
     print(f"\'{key}\' appears {value} time(s) in the string")
 ~~~
 
+12-15 嵌套数据结构
+
+字典的键的类型
+
+> **列表**不能用作键。如果你尝试了，应该会遇到以下 traceback：`TypeError: unhashable type: 'list'`。
+>
+> **字典**不能用作键。如果你尝试了，应该会遇到以下 traceback：`TypeError: unhashable type: 'list'`。
+
+如果你使用列表作为字典的键，然后修改了列表，这样就不确定你希望键是列表的旧值还是新值！
+
+字典值的类型，所有类型都可以。
+
+~~~python
+d = {'a': [{'b': 'c'}, {'d': 'e'}], 'f': 'g'}
+>>>d['a']
+[{'b': 'c'}, {'d': 'e'}]
+>>>d['a'][1]
+{'d': 'e'}
+>>>d['a'][1]['d']
+'e'
+>>>d['a'][0]['b']
+'c'
+~~~
+
+
+
+~~~python
+代码 d['a'][0]['b'] 的作用是将索引操作符相连，深入挖掘数据的嵌套结构，每个索引操作符都深入一个级别。
+~~~
+
+* 列表里可以有字典元素
+
+  ~~~python
+  l = ['a', {'b': 'c', 'd': 'e'}]
+  ~~~
+
+* 字典里可以有列表元素
+
+  ~~~~python
+  d = {'a': [{'b': 'c'}, {'d': 'e'}]}
+  ~~~~
+
+循环 字典里的字典元素
+
+~~~python
+pets = {
+    'birds': {
+        'parrot': 'Arthur',
+        'canary': 'Ford'
+    },
+    'fish': {
+        'goldfish': 'Zaphod',
+        'koi': 'Trillium'
+    }
+}
+
+for e in pets:
+    print(e)
+    #print(type(pets[e]))
+    #print(pets[e])
+    for key,value in pets[e].items():
+        print(f"{key},{value}")
+
+        
+        
+birds
+parrot,Arthur
+canary,Ford
+fish
+goldfish,Zaphod
+koi,Trillium
+~~~
+
+读取 字典组成的列表
+
+~~~python
+weather = [
+    {
+        'date':'today',
+        'state': 'cloudy',
+        'temp': 68.5
+    },
+    {
+        'date':'tomorrow',
+        'state': 'sunny',
+        'temp': 74.8
+    }
+]
+
+for e in weather:
+    
+    print(e)
+    for key,value in e.items():
+        print(f"{key},is {value}")
+
+        
+{'date': 'today', 'state': 'cloudy', 'temp': 68.5}
+date,is today
+state,is cloudy
+temp,is 68.5
+{'date': 'tomorrow', 'state': 'sunny', 'temp': 74.8}
+date,is tomorrow
+state,is sunny
+temp,is 74.8
+~~~
+
+
+

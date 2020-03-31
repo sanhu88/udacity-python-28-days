@@ -2877,7 +2877,7 @@ if r.status_code == 404:
     print('Page not find')
 ~~~
 
-12-6 Try 和Exceptions
+### 12-6 Try 和Exceptions
 
 异常： NameError 、ZeroDivisionError 、OSError
 
@@ -2953,4 +2953,77 @@ try:
 except requests.exceptions.ConnectionError:
     print("Could not connect to server.")
 ~~~
+
+### 12-7 JSON
+
+JSON 是一种格式，它是一种构建数据的方式，让用不同语言（包括 Python）编写的代码能够轻松地利用这种数据。
+
+### 12-8 ~ 9 字典
+
+1. 创建
+
+   ~~~python
+   d ={}
+   ~~~
+
+2. key-value 键值对作为item。key唯一
+
+3. 查询
+
+   ~~~python
+   >>> d ={}
+   >>> d['color'] = 'red'
+   >>> d['size'] = 'small'
+   >>> d
+   {'color': 'red', 'size': 'small'}
+   >>> d[1]
+   Traceback (most recent call last):
+     File "<stdin>", line 1, in <module>
+   KeyError: 1
+   >>> d['color']
+   'red'
+   >>>>>> d['size'] += 'small-01'#追加
+   >>> d['size']
+   'smallsmall-01'
+   
+   >>> d['name']='Peter'
+   >>> d['name']
+   'Peter'
+   >>> d['name']='JACK'
+   >>> d['name']
+   'JACK'
+   ~~~
+
+练习：
+
+~~~python
+d = {'bird': 'tweet', 'fish': 'splash'}
+d['wolf'] = 'bark'
+print(d['fish'][1] + d['wolf'][1:])
+park
+~~~
+
+~~~python
+>>> d ={}
+>>> d['e']
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 'e'
+~~~
+
+尝试在字典里访问不存在的键将生成 `KeyError`。list才是index
+
+* `in` 操作符用来判断 `x` 是否是字典 `d` 里的键！
+
+* 列表是可变的，而字符串是不可变的，字典是可变的 mutable
+
+* `del` 语句会**删除**字典里的条目。
+
+  ~~~python
+  d = {'fish': 'salmon', 'cat': 'lion'}
+  del d['fish']
+  print(d)
+  ~~~
+
+  
 

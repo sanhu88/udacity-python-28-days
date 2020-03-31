@@ -3119,7 +3119,7 @@ for key, value in dict.items():
     print(f"\'{key}\' appears {value} time(s) in the string")
 ~~~
 
-12-15 嵌套数据结构
+### 12-15-18 嵌套数据结构
 
 字典的键的类型
 
@@ -3224,6 +3224,51 @@ date,is tomorrow
 state,is sunny
 temp,is 74.8
 ~~~
+
+### 12-19 简单天气输出
+
+~~~python
+weather = [
+    {
+        'date':'today',
+        'state': 'cloudy',
+        'temp': 68.5
+    },
+    {
+        'date':'tomorrow',
+        'state': 'sunny',
+        'temp': 74.8
+    }
+]
+
+for forecast in weather:
+    print(forecast['date'])
+    print(forecast['state'])
+    print(forecast['temp'])
+    print(f"The weather for {forecast['date']} will be {forecast['state']} with a temperature of {forecast['temp']} degrees.")
+
+>>>    
+today
+cloudy
+68.5
+The weather for today will be cloudy with a temperature of 68.5 degrees.
+tomorrow
+sunny
+74.8
+The weather for tomorrow will be sunny with a temperature of 74.8 degrees.
+~~~
+
+最优雅答案
+
+~~~python
+for forecast in weather:
+    date = forecast['date']
+    state = forecast['state']
+    temp = forecast['temp']
+    print(f"The weather for {date} will be {state} with a temperature of {temp} degrees.")
+~~~
+
+
 
 
 

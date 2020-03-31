@@ -2805,3 +2805,36 @@ r
 <Response [200]>
 ~~~
 
+12-4 发出请求
+
+requests.get('https://xxxxx') 网址部分需要添加https://或者http://
+
+不然
+
+~~~
+requests.exceptions.MissingSchema: Invalid URL 'https//github.com': No schema supplied. Perhaps you meant http://https//github.com?
+~~~
+
+
+
+~~~python
+r = requests.get('https://github.com')
+>>> r
+<Response [200]>
+>>> r.status_code
+200
+>>> r.text
+~~~
+
+练习
+
+~~~python
+>>> import requests
+>>> r = requests.get('http://localhost:9999/secret')
+>>> r
+<Response [200]>
+>>> r.text
+'mango'
+>>> 
+~~~
+

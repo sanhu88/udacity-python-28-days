@@ -2805,7 +2805,7 @@ r
 <Response [200]>
 ~~~
 
-12-4 发出请求
+### 12-4 发出请求
 
 requests.get('https://xxxxx') 网址部分需要添加https://或者http://
 
@@ -2836,5 +2836,20 @@ r = requests.get('https://github.com')
 >>> r.text
 'mango'
 >>> 
+~~~
+
+### 12-5 debug
+
+* 网络具有不确定性 Non-deterministic
+* 需要考虑网络不稳定因素带来的错误
+
+练习
+
+~~~python
+import requests
+r = requests.get('https://www.google.com/monkeybagel/')
+print(type(r.status_code))
+if r.status_code == 404:
+    print('Page not find')
 ~~~
 

@@ -2796,6 +2796,30 @@ pip install requests
 pip3 install requests
 ~~~
 
+~~~shell
+
+PS C:\Windows\system32> pip install requests
+Collecting requests
+  Downloading https://files.pythonhosted.org/packages/1a/70/1935c770cb3be6e3a8b78ced23d7e0f3b187f5cbfab4749523ed65d7c9b1/requests-2.23.0-py2.py3-none-any.whl (58kB)
+     |████████████████████████████████| 61kB 393kB/s
+Collecting certifi>=2017.4.17 (from requests)
+  Downloading https://files.pythonhosted.org/packages/b9/63/df50cac98ea0d5b006c55a399c3bf1db9da7b5a24de7890bc9cfd5dd9e99/certifi-2019.11.28-py2.py3-none-any.whl (156kB)
+     |████████████████████████████████| 163kB 939kB/s
+Collecting idna<3,>=2.5 (from requests)
+  Downloading https://files.pythonhosted.org/packages/89/e3/afebe61c546d18fb1709a61bee788254b40e736cff7271c7de5de2dc4128/idna-2.9-py2.py3-none-any.whl (58kB)
+     |████████████████████████████████| 61kB 1.3MB/s
+Collecting urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 (from requests)
+  Downloading https://files.pythonhosted.org/packages/e8/74/6e4f91745020f967d09332bb2b8b9b10090957334692eb88ea4afe91b77f/urllib3-1.25.8-py2.py3-none-any.whl (125kB)
+     |████████████████████████████████| 133kB 312kB/s
+Collecting chardet<4,>=3.0.2 (from requests)
+  Downloading https://files.pythonhosted.org/packages/bc/a9/01ffebfb562e4274b6487b4bb1ddec7ca55ec7510b22e4c51f14098443b8/chardet-3.0.4-py2.py3-none-any.whl (133kB)
+     |████████████████████████████████| 143kB 726kB/s
+Installing collected packages: certifi, idna, urllib3, chardet, requests
+Successfully installed certifi-2019.11.28 chardet-3.0.4 idna-2.9 requests-2.23.0 urllib3-1.25.8
+~~~
+
+
+
 使用requests
 
 ~~~python
@@ -2851,5 +2875,82 @@ r = requests.get('https://www.google.com/monkeybagel/')
 print(type(r.status_code))
 if r.status_code == 404:
     print('Page not find')
+~~~
+
+12-6 Try 和Exceptions
+
+异常： NameError 、ZeroDivisionError 、OSError
+
+异常和错误的区别：要求作出一个八边形，却画出六边形，这是一个错误，却没有反馈异常。
+
+try ... except ：
+
+* 类似if 语句
+* try ... except 语句只能捕获当前复合语句内的错误，语句外的错误还是会报错返回traceback
+* 无法捕获语法错误，SytaxError ，因为语法错误在运行代码前就发生了
+
+requests 的一个错误是
+
+~~~~python
+requests.exceptions.ConnectionError
+~~~~
+
+~~~python
+import requests
+try:
+    r = requests.get('https://sqdmqpoijdqnfcowinfvow.com')
+    print(r.text)
+except requests.exceptions.ConnectionError:
+    print('Could not connect')
+~~~
+
+练习：
+
+python在 运行代码时（不是之前，也不是之后）会抛出错误
+
+~~~python
+try:
+    print(17 / 0)
+except IndexError:
+    print("negative forty-two")
+~~~
+
+如果except标注的不对，也会输出traceback
+
+~~~python
+def takeoff():
+    print(TAKEOFF)
+
+try:
+    print("3, 2, 1, ...")
+    takeoff()
+except NameError:
+    print("Failed to launch")
+~~~
+
+> 输出 `3, 2, 1, ...` 的语句将运行，然后 `takeoff` 函数被调用。但是，名称 `TAKEOFF` 未定义，因此 `takeoff` 函数将导致 `NameError`。`try ... except` 语句捕获该异常并输出 `Failed to launch`。
+
+练习
+
+~~~python
+import requests
+try:
+    r = requests.get("https://www.udacity.com")
+    print(r.status_code)
+except requests.exceptions.ConnectionError:
+    print("can not connect.")
+
+~~~
+
+答案
+
+~~~python
+import requests
+
+try:
+    r = requests.get("https://www.udacity.com")
+    print(r) # If you did print(r.status_code), that also works!
+except requests.exceptions.ConnectionError:
+    print("Could not connect to server.")
 ~~~
 

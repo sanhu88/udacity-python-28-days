@@ -3268,6 +3268,86 @@ for forecast in weather:
     print(f"The weather for {date} will be {state} with a temperature of {temp} degrees.")
 ~~~
 
+12-20 真实天气数据
+
+1. 获取城市WOEID 
+
+   ~~~
+   https://www.metaweather.com/api/location/search/?query=beijing
+   [{"title":"Beijing","location_type":"City","woeid":2151330,"latt_long":"39.906010,116.387909"}]
+   [{"title":"Dongguan","location_type":"City","woeid":2161842,"latt_long":"23.046499,113.735817"}]
+   ~~~
+
+   
+
+2. 获取城市数据
+
+   ~~~~
+   https://www.metaweather.com/api/location/2161842/
+   
+   >>>
+   {"consolidated_weather":
+   [{"id":6652007010009088,"weather_state_name":"Heavy Rain","weather_state_abbr":"hr","wind_direction_compass":"NNE","created":"2020-03-31T06:54:32.900118Z","applicable_date":"2020-03-31","min_temp":16.25,"max_temp":20.83,"the_temp":19.055,"wind_speed":4.153946038940587,"wind_direction":24.497022441861475,"air_pressure":1015.0,"humidity":88,"visibility":6.140079436093215,"predictability":77},
+   {"id":4854044042461184,"weather_state_name":"Light Rain","weather_state_abbr":"lr","wind_direction_compass":"NNE","created":"2020-03-31T06:54:35.841360Z","applicable_date":"2020-04-01","min_temp":18.43,"max_temp":24.29,"the_temp":21.314999999999998,"wind_speed":4.22691525905777,"wind_direction":32.483974436990124,"air_pressure":1017.0,"humidity":83,"visibility":9.887258410880458,"predictability":75},
+   {"id":5495773930192896,"weather_state_name":"Light Rain","weather_state_abbr":"lr","wind_direction_compass":"ESE","created":"2020-03-31T06:54:38.818207Z","applicable_date":"2020-04-02","min_temp":20.47,"max_temp":26.55,"the_temp":23.735,"wind_speed":5.79158378145497,"wind_direction":117.79904866816615,"air_pressure":1018.5,"humidity":75,"visibility":10.115612324027678,"predictability":75},{"id":5982180150870016,"weather_state_name":"Showers","weather_state_abbr":"s","wind_direction_compass":"ESE","created":"2020-03-31T06:54:42.023996Z","applicable_date":"2020-04-03","min_temp":20.6,"max_temp":27.095,"the_temp":24.064999999999998,"wind_speed":5.285056659304329,"wind_direction":116.83238443691666,"air_pressure":1018.5,"humidity":73,"visibility":10.39243319016941,"predictability":73},
+   {"id":5419230197448704,"weather_state_name":"Light Rain","weather_state_abbr":"lr","wind_direction_compass":"E","created":"2020-03-31T06:54:44.897674Z","applicable_date":"2020-04-04","min_temp":21.055,"max_temp":27.325,"the_temp":23.659999999999997,"wind_speed":4.394960584042525,"wind_direction":91.60905974630204,"air_pressure":1019.0,"humidity":75,"visibility":8.223847729261115,"predictability":75},
+   {"id":5528150836510720,"weather_state_name":"Heavy Rain","weather_state_abbr":"hr","wind_direction_compass":"E","created":"2020-03-31T06:54:47.746012Z","applicable_date":"2020-04-05","min_temp":19.195,"max_temp":23.61,"the_temp":23.93,"wind_speed":4.0868591426071745,"wind_direction":91.50000000000001,"air_pressure":1020.0,"humidity":74,"visibility":9.160875487155014,"predictability":77}],
+   "time":"2020-03-31T16:12:32.440831+08:00","sun_rise":"2020-03-31T06:17:27.724956+08:00","sun_set":"2020-03-31T18:40:17.023721+08:00","timezone_name":"LMT",
+   "parent":{"title":"China","location_type":"Country","woeid":23424781,"latt_long":"36.894451,104.165649"},"sources":[{"title":"Forecast.io","slug":"forecast-io","url":"http://forecast.io/","crawl_rate":480},{"title":"HAMweather","slug":"hamweather","url":"http://www.hamweather.com/","crawl_rate":360},{"title":"Met Office","slug":"met-office","url":"http://www.metoffice.gov.uk/","crawl_rate":180},{"title":"OpenWeatherMap","slug":"openweathermap","url":"http://openweathermap.org/","crawl_rate":360},{"title":"Weather Underground","slug":"wunderground","url":"https://www.wunderground.com/?apiref=fc30dc3cd224e19b","crawl_rate":720},{"title":"World Weather Online","slug":"world-weather-online","url":"http://www.worldweatheronline.com/","crawl_rate":360}],"title":"Dongguan","location_type":"City","woeid":2161842,"latt_long":"23.046499,113.735817","timezone":"Asia/Shanghai"}
+   ~~~~
+
+从 JSON 文本更改为 Python 字典
+
+~~~python
+d = r.json()
+~~~
+
+~~~python
+import requests
+r = requests.get('https://www.metaweather.com/api/location/2161842')
+d = r.json()
+#for item in d['consolidated_weather'].items():
+#    print(item)
+for item in d['consolidated_weather']:
+    print(item)
+    print(item['id'])
+~~~
+
+
+
+### 12-20 获取天气预报
+
+~~~python
+import requests
+r = requests.get('https://www.metaweather.com/api/location/2161842')
+d = r.json()
+#for item in d['consolidated_weather'].items():
+#    print(item)
+for item in d['consolidated_weather']:
+    #print(item)
+    #print(item['applicable_date'])
+    #print(item['humidity'])
+    applicable_date =item['applicable_date']
+    humidity =item['humidity']
+    print(f"the humidity of {applicable_date} is {humidity}.")
+~~~
+
+答案
+
+~~~python
+import requests
+
+r = requests.get('https://www.metaweather.com/api/location/2455920')
+d = r.json()
+
+for forecast in d['consolidated_weather']:
+    date = forecast['applicable_date']
+    humidity = forecast['humidity']
+    print(f"{date}\tHumidity: {humidity}")
+~~~
+
+
+
 
 
 

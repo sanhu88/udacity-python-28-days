@@ -2347,7 +2347,7 @@ D:\Online\Udacity\udacity-python-28-days> pycodestyle 11-10_organize_photos.py
 11-10_organize_photos.py:45:46: W292 no newline at end of file
 ~~~
 
-保存后可以急需验证，没有消息就是好消息
+保存后可以继续验证，没有消息就是好消息
 
 练习
 
@@ -2373,9 +2373,7 @@ contents = my.story.read()
 contents #将输出内容字符串
 ~~~
 
-~~~python
 
-~~~
 
 ~~~python
 my.story.close()
@@ -2592,8 +2590,9 @@ if __name__ == "__main__":
 strip 是去除首位匹配的字符：
 
 ~~~
-str = "00000003210Runoob01230000000"; 
-print str.strip( '0' );  # 去除首尾字符 0
+ str = "00000003210Runoob01230000000";
+>>> print (str.strip( '0' )) # 去除首尾字符 0
+3210Runoob0123 
 ~~~
 
 
@@ -2601,6 +2600,7 @@ print str.strip( '0' );  # 去除首尾字符 0
 `string.punctuation` 就一个包含了各种符号的参数
 
 ~~~
+import string
 string.punctuation
 '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
 ~~~
@@ -2756,3 +2756,37 @@ with open("read.txt") as reader:
 
 * 如果不存在read.txt程序崩溃
 * 如果 read.txt 太大，放不进内存，崩溃
+
+待做：
+
+将rude词语换成***，replace 函数，读取再写入
+
+## 12 网络API
+
+### 12-1 API **应用编程接口**
+
+有点类似调用模块里的函数，只是远程帮我们计算处理。API 是一个接口。创建它的目的是帮助两个不同的应用交互。
+
+### 12-2 获取天气数据
+
+~~~python
+https://www.metaweather.com/api/location/search/?query=
+~~~
+
+浏览器会将空格替换为专门表示空格的特定代码 `%20`
+
+~~~shell
+curl https://www.metaweather.com/api/location/search/?query=New%20Delhi
+[{"title":"New Delhi","location_type":"City","woeid":28743736,"latt_long":"28.643999,77.091003"}]
+~~~
+
+练习：
+
+~~~shell
+curl https://www.metaweather.com/api/location/28743736/
+
+{"consolidated_weather":[{"id":4729749567963136,"weather_state_name":"Light Cloud","weather_state_abbr":"lc","wind_direction_compass":"NW","created":"2020-03-31T00:25:43.601239Z","applicable_date":"2020-03-31","min_temp":18.81,"max_temp":33.81,"the_temp":31.06,"wind_speed":5.768218554282988,"wind_direction":308.46148742094334,"air_pressure":1012.0,"humidity":31,"visibility":13.669234172432992,"predictability":70},{"id":5149635637149696,"weather_state_name":"Light Cloud","weather_state_abbr":"lc","wind_direction_compass":"NW","created":"2020-03-31T00:25:46.472301Z","applicable_date":"2020-04-01","min_temp":19.96,"max_temp":34.525000000000006,"the_temp":32.225,"wind_speed":5.029699959243352,"wind_direction":318.99347765905793,"air_pressure":1011.0,"humidity":30,"visibility":12.578417044460352,"predictability":70},{"id":5244641588805632,"weather_state_name":"Clear","weather_state_abbr":"c","wind_direction_compass":"WNW","created":"2020-03-31T00:25:49.473227Z","applicable_date":"2020-04-02","min_temp":20.335,"max_temp":34.215,"the_temp":31.935,"wind_speed":5.4370671315782495,"wind_direction":300.10561620978945,"air_pressure":1011.0,"humidity":27,"visibility":12.533678318619263,"predictability":68},{"id":6299971793977344,"weather_state_name":"Clear","weather_state_abbr":"c","wind_direction_compass":"NW","created":"2020-03-31T00:25:52.575922Z","applicable_date":"2020-04-03","min_temp":20.674999999999997,"max_temp":34.834999999999994,"the_temp":32.44,"wind_speed":5.968544966945042,"wind_direction":311.00918115961116,"air_pressure":1011.0,"humidity":22,"visibility":12.621602342320845,"predictability":68},{"id":6275577990348800,"weather_state_name":"Clear","weather_state_abbr":"c","wind_direction_compass":"WNW","created":"2020-03-31T00:25:55.584865Z","applicable_date":"2020-04-04","min_temp":21.01,"max_temp":36.120000000000005,"the_temp":32.86,"wind_speed":5.626865080407751,"wind_direction":303.17550226801234,"air_pressure":1011.5,"humidity":19,"visibility":12.66012735623956,"predictability":68},{"id":6048661681209344,"weather_state_name":"Clear","weather_state_abbr":"c","wind_direction_compass":"NW","created":"2020-03-31T00:25:58.485356Z","applicable_date":"2020-04-05","min_temp":21.545,"max_temp":37.605000000000004,"the_temp":35.51,"wind_speed":5.160611429253162,"wind_direction":309.0,"air_pressure":1008.0,"humidity":14,"visibility":9.999726596675416,"predictability":68}],"time":"2020-03-31T07:49:59.523844+05:30","sun_rise":"2020-03-31T06:12:39.802406+05:30","sun_set":"2020-03-31T18:39:14.473371+05:30","timezone_name":"LMT","parent":{"title":"India","location_type":"Country","woeid":23424848,"latt_long":"21.786600,82.794762"},"sources":[{"title":"BBC","slug":"bbc","url":"http://www.bbc.co.uk/weather/","crawl_rate":360},{"title":"Forecast.io","slug":"forecast-io","url":"http://forecast.io/","crawl_rate":480},{"title":"Met Office","slug":"met-office","url":"http://www.metoffice.gov.uk/","crawl_rate":180},{"title":"OpenWeatherMap","slug":"openweathermap","url":"http://openweathermap.org/","crawl_rate":360},{"title":"World Weather Online","slug":"world-weather-online","url":"http://www.worldweatheronline.com/","crawl_rate":360}],"title":"New Delhi","location_type":"City","woeid":28743736,"latt_long":"28.643999,77.091003","timezone":"Asia/Kolkata"}
+~~~
+
+
+

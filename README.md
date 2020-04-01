@@ -1,4 +1,7 @@
-# udacity-python-28-days
+每个对象都占据了计算机内存中的某个空间。创建对象时，Python 会为其分配空间。当引用对象的变量超出范围时，Python 可以通过删除不使用的对象释放该内存空间。
+
+但是并非所有对象都可修改。例如，字符串和整数不能修改udacity-python-28-days
+
 learn Python on Udacity
 
 [toc]
@@ -85,8 +88,9 @@ a block of code that`s hidden away somewhere else,that  this code has a name and
 
 - pendown()落笔，重新有笔迹
 
-  
+
   #### 注释快捷键
+
   在大多数代码编辑器中，你都可以使用很方便的键盘快捷键注释掉/取消注释一行代码。在 Mac 系统上，快捷键是 ⌘/。在 Windows 系统上，快捷键是 Ctrl + /。如果你将光标放在一行代码上，并按下此快捷键，编辑器将在代码行开头插入 #。
 
 
@@ -120,8 +124,8 @@ side = [1,2,3,4,5] 列表里可以换成字符串，或者其他数字，甚至�
 
 > ```python
 > for side in [1, 2, 3, 4, 5]:
->     amy.forward(100)
->     amy.right(72)
+>  amy.forward(100)
+>  amy.right(72)
 > ```
 
 缩进和顺序很重要，没有缩进，就不执行缩进。
@@ -158,16 +162,16 @@ syntax注意冒号（colon）和缩进（indentation）
 > 
 > # Copy the angles variable here!
 > angles = [-90, 0, 0, -90,
->           135, 0, 0, 0, 
->           90, 0, 0, 0,
->           135, -90, 0, 0,
->           90, 0, 0, 0]
+>        135, 0, 0, 0, 
+>        90, 0, 0, 0,
+>        135, -90, 0, 0,
+>        90, 0, 0, 0]
 > for angle in angles:
->     # Turn right, then go forward 25.
->     # (How far to turn?
->     #  Use the angle variable!)
->     builder.right(angle)
->     builder.forward(25)
+>  # Turn right, then go forward 25.
+>  # (How far to turn?
+>  #  Use the angle variable!)
+>  builder.right(angle)
+>  builder.forward(25)
 > ~~~
 
 
@@ -1868,7 +1872,7 @@ words = ["echidna", "dingo", "crocodile", "bunyip"]
 
 1. append 
 
-    `append` 方法会将项目添加到列表的末尾 
+   `append` 方法会将项目添加到列表的末尾 
 
    ~~~python
    words.append("platypus")
@@ -2797,7 +2801,6 @@ pip3 install requests
 ~~~
 
 ~~~shell
-
 PS C:\Windows\system32> pip install requests
 Collecting requests
   Downloading https://files.pythonhosted.org/packages/1a/70/1935c770cb3be6e3a8b78ced23d7e0f3b187f5cbfab4749523ed65d7c9b1/requests-2.23.0-py2.py3-none-any.whl (58kB)
@@ -3315,7 +3318,7 @@ for item in d['consolidated_weather']:
 
 
 
-### 12-20 获取天气预报
+### 12-20~22 获取天气预报
 
 ~~~python
 import requests
@@ -3346,9 +3349,116 @@ for forecast in d['consolidated_weather']:
     print(f"{date}\tHumidity: {humidity}")
 ~~~
 
+12-23 复习
 
+1. ~~~python
+   import requests
+   yahoo = requests.get("https://www.yahoo.com/")
+   print(yahoo.text)
+   ~~~
 
+   变量 `yahoo` 是什么对象？
 
+   **响应对象**，包含状态代码和响应文本。
 
+   * `requests.get` 方法返回一个响应对象。此代码将向雅虎发送网络请求！并输出获得的 HTML 和 JavaScript。
+   * 不是请求对象，`requests.get` 函数调用的确执行的是请求，但是返回的值不是请求
+   * 不是模块对象，`requests` 是模块，但是此代码里的变量 `yahoo` 不是模块。
 
+2. ~~~python
+   list =[] #列表元素可以修改
+   tuple =() #元组元素不可以修改
+   ~~~
 
+3. 添加一个 `try .. except` 语句，以处理发生连接错误的情形
+
+### 11-24 终版天气预报
+
+~~~python
+def fetch_location(query):
+    return requests.get(API_ROOT + API_LOCATION + query).json()
+~~~
+
+如果加入try ... except 判断
+
+~~~python
+def fetch_location(query):
+    try:
+        return requests.get(API_ROOT + API_LOCATION + query).json()
+    except requests.Exceptions.ConnectError:
+        print('Network have issue.')
+
+    
+~~~
+
+但是Dan没加在这里，因为
+
+* 函数最好只做函数名的一件事
+* 不止一处会用到网络请求
+
+所以检测加在最终查询函数
+
+~~~python
+def weather_dialog():
+    try:
+        where = ''
+        while not where:
+            where = input("Where in the world are you? ")
+        locations = fetch_location(where)
+        if len(locations) == 0:
+            print("I don't know where that is.")
+        elif len(locations) > 1:
+            disambiguate_locations(locations)
+        else:
+            woeid = locations[0]['woeid']
+            display_weather(fetch_weather(woeid))
+    except requests.exceptions.ConnectionError:
+        print("Couldn't connect to server! Is the network up?")
+
+~~~
+
+## 13 对象和类
+
+### 13-1 开始
+
+已经接触过的对象：turtle 字符串 列表 文件 函数，内置于pythoncore 的对象 object
+
+python 允许创建新的自有的对象，使用对象而不用关心内部如何运作
+
+创建新的对象的方式是，编写类定义
+
+### 13-2 复习对象和数据类型
+
+1. while 循环不是对象
+
+   判断是否为对象的方式之一是询问**是否能作为变量的值**。字符串、打开的文件，甚至函数都是对象，但是 while 循环不是。
+
+   * 函数是对象。函数定义会创建函数对象。
+   * 打开的文件是对象。当你调用 `open` 函数时，它返回的是打开文件对象。
+   * 字符串是对象。你可以将字符串放入变量里，将字符串当做参数传递，返回字符串，等等。
+
+2. 关于对象的表述
+
+   * 每个对象都占据了计算机内存中的某个空间。创建对象时，Python 会为其分配空间。当引用对象的变量超出范围时，Python 可以通过删除不使用的对象释放该内存空间。
+   
+   * 但是并非所有对象都可修改。例如，字符串和整数不能修改
+   
+   * 对象可以消失。回忆下函数变量作用域知识。如果对象仅被函数里的变量引用，并且该函数存在，那么该对象可以消失。
+   
+   * 某些对象不能被修改。
+   
+     回忆下字符串不变性知识。你可以将字符串对象替换为其他字符串，但是不能更改字符串的值。
+   
+     整数 `5` 等数字也是不可变的：你可以更改变量引用的数字，但是 `5` 本身不能更改。
+   
+3. ~~~python
+   open("dictionary.txt") 和 myfile.read()
+   ~~~
+
+   这两个表达式的结果数据类型不同。`open("dictionary.txt")` 的结果是打开文件对象，如果该文件不存在，则抛出错误。`myfile.read()` 的结果是字符串，假设 `myfile` 是打开文件对象。
+
+4. 关于 数据类型的表述
+
+   * 字符串和列表具有一些相同的方法，例如 `count` 和 `find`。但是字符串类型和列表类型各自包含对方没有的方法。
+   * 没有小数部分的数字（例如 `5` 或 `-23`）属于 `int` 数据类型，表示整数。有小数部分的数字（例如 `3.1415` 或 `-0.01`）属于不同的数据类型，叫做 `float`。
+   * 文件名是字符串，但是文件对象不是字符串对象类型。文件本身是一种对象，具有的方法和字符串方法截然不同。但是，很多文件对象接受字符串参数或返回字符串值。

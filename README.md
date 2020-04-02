@@ -3583,4 +3583,116 @@ white.speak()
   TypeError: speak() missing 1 required positional argument: 'self'
   ~~~
 
-  
+### 13-7 使用类级别的变量
+
+.py的文件修改不会影响到已经导入的程序，需要退出程序并重启运行才能让改动生效。
+
+~~~python
+>>>exit()
+python
+import animals
+~~~
+
+类里面可以有变量，叫做类级别变量
+
+~~~python
+class Dog:
+    name ='D-O-G,dog.'
+~~~
+
+所有调用的参数，都可以用这个方法来调用这个变量。
+
+~~~PYTHON
+>>> import animals
+>>> black = animals.Dog()
+>>> black.name()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'str' object is not callable
+>>> black.name
+'D-O-G,dog.'
+>>> black.name = 'DOG'
+>>> black.name
+'DOG'
+~~~
+
+### 13-8 使用实例 级别的变量
+
+实例级别变量，主要用于给类的实例针对性的赋值,
+
+~~~python
+self.name
+~~~
+
+~~~python
+import random
+
+class Dog:
+    uni_name ='D-O-G'
+    def speak(self):
+        print("Woof!")
+    def learn_name(self,name):
+        self.name = name
+    def repson(self,words):
+        try:
+            if self.name in words:
+                self.speak()
+        except AttributeError:
+            print(f"{self} not learn a name.")
+    
+
+~~~
+
+练习：
+
+> 银行账户里的资金数量特定于某个银行账户；并没有在 `BankAccount` 类的所有对象之间分享，因此是实例变量。
+>
+> `UserAccount` 类里的密码最大长度对于该类的所有实例来说都一样，因此是类级别变量。
+>
+> `ChessGame` 中棋盘上的当前棋子列表特定于一场游戏。每个棋类游戏都有自己的棋盘和棋子。这是实例级别变量。
+>
+> 所有 `Hexagon` 都具有相同的边数，因此是类级别变量。
+
+~~~python
+>>> black.learn_name('Leo')
+>>> black.name
+'Leo'
+>>> black.repson('Good boy,Leo')
+Woof!
+
+>>> gary.repson('Good boy,Leo')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/workspace/animals.py", line 13, in repson
+    if self.name in words:
+AttributeError: 'Dog' object has no attribute 'name'
+~~~
+
+添加 try except AttributeError:防止中断
+
+13-9 初始化 name 
+
+~~~python
+__init__ 
+~~~
+
+~~~python
+class Dog:
+    def __init__(self,name):
+        self.name = name
+    def speak(self):
+        print("Woof!")
+   
+        
+    def repson(self,words):
+        if self.name in words:
+            self.speak()
+~~~
+
+此时第一次调用时，必须传递name这个参数
+
+~~~python
+black = animals.Dog("Leo")
+~~~
+
+不然提示缺少name参数

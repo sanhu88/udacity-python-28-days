@@ -3670,7 +3670,7 @@ AttributeError: 'Dog' object has no attribute 'name'
 
 添加 try except AttributeError:防止中断
 
-13-9 初始化 name 
+### 13-9 初始化 name 
 
 ~~~python
 __init__ 
@@ -3689,10 +3689,56 @@ class Dog:
             self.speak()
 ~~~
 
-此时第一次调用时，必须传递name这个参数
+此时第一次调用时，必须传递name这个参数，并进行初始化
 
 ~~~python
 black = animals.Dog("Leo")
 ~~~
 
 不然提示缺少name参数
+
+### 13-10 在实例里存储信息
+
+~~~python
+class Dog:
+    uni_name ='D-O-G,dog.'
+    
+    def __init__(self,name):
+        self.name =name
+        self.i = 0
+    
+    def count(self):
+        self.i +=1
+        for n in range(self.i):
+            self.speak()
+        
+        
+        
+        
+    def speak(self):
+        print("Woof!")
+    def eat(food):
+        if food =='food':
+            print("Yummy food")
+        else:
+            print("Not food")
+    def learn_name(self,name):
+        self.name =name
+    def repson(self,words):
+        try:
+            if self.name in words:
+                self.speak()
+        except AttributeError:
+            print(f"{self} not learn a name.")
+    
+class Cat:
+    def speak(self):
+        print("Meow!")
+        
+# When calling the eat method, you only need to pass it
+# one argument, even though there are two parameters:
+# spot.eat("biscuit")
+# spot.eat("chair")
+
+~~~
+

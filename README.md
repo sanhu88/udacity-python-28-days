@@ -3513,3 +3513,74 @@ turtle.Tturtle 不是函数，也不是方法。 是类本身，调用就会创�
 * 在python中 class 类是创建对象的模板或蓝图，通过调用类来使用类，像使用函数和方法一样。调用时，返回这个类的新对象，然后使用这个对象，比如调用这个对象的方法。
 * CSS 是一种标签，用于向很多HTML元素 批量引用相同的样式信息
 * 类：汽车（发动机+四个轮子）；对象：SUV(外形+大点的轮胎)；方法：越野能力
+
+### 13-5-6 创建新的类
+
+animals.py文件
+
+~~~python
+import random
+
+class Dog:
+    def speak(self):
+        print("Woof!")
+
+    def eat(self, food):
+        if food == "food":
+            print("Yummy food!")
+        else:
+            print("That's not food!")
+
+class Cat:
+    def speak(self):
+        print(random.choice(["Meow!", "Purr!"]))
+
+~~~
+
+使用方法
+
+~~~python
+import animals
+black = animals.Dog()
+black.eat("wood")
+white = animals.Cat()
+white.speak()
+~~~
+
+* 类里面放的是方法定义 method definition
+
+* def speak(self)  调用时，python会自动传递参数名字比如fido，self是通用名，不是指定的
+
+  如果不给参数
+
+  ~~~python
+  >>> import animals
+  >>> ty = animals.Cat()
+  >>> ty.speak()
+  Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+  TypeError: speak() takes 0 positional arguments but 1 was given
+  >>> ty.speak(ty)
+  Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+  TypeError: speak() takes 0 positional arguments but 2 were given
+  ~~~
+
+  
+
+* 引用赋值是记得最后括号 
+
+  ~~~python
+  black = animals.Dog()
+  ~~~
+
+  不然后面的方法调用会报错
+
+  ~~~python
+  >>> white.speak()
+  Traceback (most recent call last):
+    File "<stdin>", line 1, in <module>
+  TypeError: speak() missing 1 required positional argument: 'self'
+  ~~~
+
+  

@@ -3862,3 +3862,21 @@ class TrainedChihuahua(Chihuahua):
 The chihuahua spins in the air and turns briefly into a chicken.
 ~~~
 
+### 13-12 关系判断
+
+is-a 和 Has-a
+
+> Husky is a dog
+>
+> Dog-park is not dog
+>
+> Dog-park has a dog in it
+
+Has-a 的代码展示
+
+~~~python
+class DogPark():
+    def __init__(self,dogs):
+        self.dogs =dogs
+~~~
+

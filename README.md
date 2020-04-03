@@ -3742,3 +3742,123 @@ class Cat:
 
 ~~~
 
+* 计数器初始化在init 里初始化为实例变量，而且不是类级别变量
+
+### 13-14 继承 inheritance / subclassing
+
+1. copy已经有的行为
+2. 还可以修改和替换已经有的行为
+
+~~~python
+
+class Chihuahua(Dog):
+    origin = 'Mexico'
+    
+    def speak(self):
+        print('Yip!')
+~~~
+
+~~~python
+isinstance(Chihuahua,animals.Dog)
+True
+
+issubclass(animals.Chihuahua,animals.Dog)
+True
+~~~
+
+> 布尔值 True 和 False 也是 int 类的成员。实际上这是一种子类示例，内置在了 Python 的核心代码里。True 和 False 是 `bool` 类的成员 — 但是 `bool` 是 `int` 的子类
+
+练习：
+
+~~~python
+class Dog:
+    uni_name ='D-O-G,dog.'
+    
+    def __init__(self,name):
+        self.name =name
+        self.i = 0
+    
+    def count(self):
+        self.i +=1
+        for n in range(self.i):
+            self.speak()
+        
+        
+        
+        
+    def speak(self):
+        print("Woof!")
+    def eat(food):
+        if food =='food':
+            print("Yummy food")
+        else:
+            print("Not food")
+    def learn_name(self,name):
+        self.name =name
+    def repson(self,words):
+        try:
+            if self.name in words:
+                self.speak()
+        except AttributeError:
+            print(f"{self} not learn a name.")
+class Corgi(Dog):
+    origin : 'Welsh'
+    def speak(self):
+        print("Wangwang!")
+class Cat:
+    def speak(self):
+        print("Meow!")
+        
+# When calling the eat method, you only need to pass it
+# one argument, even though there are two parameters:
+# spot.eat("biscuit")
+# spot.eat("chair")
+
+~~~
+
+~~~python
+>>> import animals
+>>> Doudou = animals.Corgi("Dou")
+>>> Doudou.speak()
+Wangwang!
+>>> Doudou.name()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'str' object is not callable
+>>> Doudou.uni_name
+'D-O-G,dog.'
+>>> Doudou.name
+'Dou'
+>>> Doudou.repson("Hi Doudou")
+Wangwang!
+~~~
+
+定义的属性，不能括号，不是方法会报错.
+
+#### pass
+
+> 在 Python 里不能有不包含任何语句的函数或类
+
+`pass` 可以用在类或方法定义里，表示意在什么也不做.占位符方法
+
+~~~python
+class Dog:
+    def do_trick(self):
+        pass
+
+class Chihuahua(Dog):
+    pass
+
+class TrainedChihuahua(Chihuahua):
+    def do_trick(self):
+        print("The chihuahua spins in the air and turns briefly into a chicken.")
+~~~
+
+~~~python
+>>> fido = Dog()
+>>> fido.do_trick()
+>>> pupper = TrainedChihuahua()
+>>> pupper.do_trick()
+The chihuahua spins in the air and turns briefly into a chicken.
+~~~
+

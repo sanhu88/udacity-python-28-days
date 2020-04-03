@@ -3894,3 +3894,102 @@ class myNewTurtle(self,turtle.Turtle):
 ~~~
 
 不是每一个父类都需要，但是我觉得建议这么做，没什么坏处
+
+## 16 爬虫
+
+### 16-2 HTML基础
+
+* `div` 是 "division" 的缩写
+* `p` 是 "段落" 的缩写。`` 和其结束标签 `` 之间的文本是提供 HTML 时，显示在屏幕上的内容
+* 标签是一个 HTML 源码，而元素是在浏览器呈现标签后用户可以看到的可视化组件。
+
+![img](README.assets/trees.png)
+
+~~~html
+<title>My Website</title>
+<div id="introduction">
+  <p>
+    Welcome to my website!
+  </p>
+</div>    
+<div id="image-gallery">
+  <p>
+    This is my cat!
+    <img src="cat.jpg" alt="Meow!">
+    <a href="https://en.wikipedia.org/wiki/Cat">Learn more about cats!</a>
+  </p>
+</div>
+~~~
+
+* `image-gallery` div 有一个直接后代元素或子类元素：段落元素。
+* 每个元素都有一个父类，这是因为将这些元素建构为一个树。一个元素可以具有任意数量的子类，但只能有一个父类。
+
+* 锚标签（用``表示，用于创建链接）
+
+  ~~~html
+  <a href="https://en.wikipedia.org/wiki/Cat">Learn more about cats!</a>
+  <!-- href:hypertext reference 超文本引用 -->
+  ~~~
+
+#### requests 模块
+
+~~~python
+import requests
+respone = requests.get('https://udacity.com')
+print(respone.text)
+>>> print(type(respone))
+<class 'requests.models.Response'>
+>>> print(type(respone.text))
+<class 'str'>
+~~~
+
+#### Beautiful Soup
+
+官方使用[指导文档](https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/)
+
+安装
+
+~~~python
+pip3 install beautifulsoup4
+or
+pip install beautifulsoup4
+
+
+~~~
+
+>Requirement already satisfied: beautifulsoup4 in c:\users\admin\appdata\local\programs\python\python38\lib\site-packages (4.8.2)
+>Requirement already satisfied: soupsieve>=1.2 in c:\users\admin\appdata\local\programs\python\python38\lib\site-packages (from beautifulsoup4) (2.0)
+
+~~~python
+import os
+import reuqests
+from bs4 import BeautifulSoup
+magento = requests.get('https://magento.com/tech-resources/download')
+webtext = magento.text
+magento_soup = BeautifulSoup(webtext,'html.parser')
+with open("magento-download-link.txt","w") as newf:
+    for link in magento_soup.find_all('a'):
+    	hrefs = link.get('href')
+        if(type(hrefs)) == str:
+			newf.write(f"{hrefs}\n")
+    
+
+    
+
+~~~
+
+练习
+
+计算结果为页面中第一段的所有锚标签
+
+~~~python
+soup.p.find_all('a')
+~~~
+
+如果一个 soup 对象的名称为 `soup`，那么什么代码将选择一个具有 id "image-gallery" 的 div 元素？
+
+~~~python
+soup.find(id="image-gallery")
+~~~
+
+此代码未明确指定其应该查找一个 div 标签，但是只有一个具有特定 id 的元素，这说明这是正常的。

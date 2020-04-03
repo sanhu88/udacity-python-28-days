@@ -3880,3 +3880,17 @@ class DogPark():
         self.dogs =dogs
 ~~~
 
+13-13 super()
+
+在修改父类的init时，需要添加super(). 来继承父类其他的初始化,不是完整的修改了父类的初始化方法，避免报错。
+
+~~~python
+import turtle
+class myNewTurtle(self,turtle.Turtle):
+    def __int__(self):
+        super().__init__()
+        self.color("orange")
+        self.speed(0)
+~~~
+
+不是每一个父类都需要，但是我觉得建议这么做，没什么坏处
